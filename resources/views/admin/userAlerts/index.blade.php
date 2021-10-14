@@ -16,14 +16,11 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact  table-hover datatable datatable-UserAlert">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-UserAlert">
                 <thead>
                     <tr>
                         <th width="10">
 
-                        </th>
-                        <th>
-                            {{ trans('cruds.userAlert.fields.id') }}
                         </th>
                         <th>
                             {{ trans('cruds.userAlert.fields.alert_text') }}
@@ -47,9 +44,6 @@
                         <tr data-entry-id="{{ $userAlert->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $userAlert->id ?? '' }}
                             </td>
                             <td>
                                 {{ $userAlert->alert_text ?? '' }}
@@ -139,7 +133,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
+  
 })
 
 </script>

@@ -16,14 +16,20 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact  table-hover datatable datatable-ContentCategory">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-ContentCategory">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
+                            {{ trans('cruds.contentCategory.fields.id') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.contentCategory.fields.name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.contentCategory.fields.slug') }}
                         </th>
                         <th>
                             &nbsp;
@@ -37,7 +43,13 @@
 
                             </td>
                             <td>
+                                {{ $contentCategory->id ?? '' }}
+                            </td>
+                            <td>
                                 {{ $contentCategory->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $contentCategory->slug ?? '' }}
                             </td>
                             <td>
                                 @can('content_category_show')
@@ -118,7 +130,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
+  
 })
 
 </script>

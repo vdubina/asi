@@ -16,7 +16,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact  table-hover datatable datatable-CourseProduct">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-CourseProduct">
                 <thead>
                     <tr>
                         <th width="10">
@@ -163,7 +163,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
+  
 let visibleColumnsIndexes = null;
 $('.datatable thead').on('input', '.search', function () {
       let strict = $(this).attr('strict') || false
