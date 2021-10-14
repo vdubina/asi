@@ -16,7 +16,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-ContentPage">
+            <table class=" table table-striped compact  table-hover datatable datatable-ContentPage">
                 <thead>
                     <tr>
                         <th width="10">
@@ -30,18 +30,6 @@
                         </th>
                         <th>
                             {{ trans('cruds.contentPage.fields.category') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.contentPage.fields.tag') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.contentPage.fields.excerpt') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.contentPage.fields.featured_image') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.contentPage.fields.field_is_subsite_content') }}
                         </th>
                         <th>
                             &nbsp;
@@ -65,21 +53,6 @@
                             </select>
                         </td>
                         <td>
-                            <select class="search">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach($content_tags as $key => $item)
-                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -99,25 +72,6 @@
                                 @foreach($contentPage->categories as $key => $item)
                                     <span class="badge badge-info">{{ $item->name }}</span>
                                 @endforeach
-                            </td>
-                            <td>
-                                @foreach($contentPage->tags as $key => $item)
-                                    <span class="badge badge-info">{{ $item->name }}</span>
-                                @endforeach
-                            </td>
-                            <td>
-                                {{ $contentPage->excerpt ?? '' }}
-                            </td>
-                            <td>
-                                @if($contentPage->featured_image)
-                                    <a href="{{ $contentPage->featured_image->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $contentPage->featured_image->getUrl('thumb') }}">
-                                    </a>
-                                @endif
-                            </td>
-                            <td>
-                                <span style="display:none">{{ $contentPage->field_is_subsite_content ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $contentPage->field_is_subsite_content ? 'checked' : '' }}>
                             </td>
                             <td>
                                 @can('content_page_show')
@@ -198,7 +152,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 let visibleColumnsIndexes = null;
 $('.datatable thead').on('input', '.search', function () {
       let strict = $(this).attr('strict') || false

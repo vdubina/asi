@@ -16,7 +16,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-ContentTag">
+            <table class=" table table-striped compact  table-hover datatable datatable-ContentTag">
                 <thead>
                     <tr>
                         <th width="10">
@@ -29,17 +29,11 @@
                             {{ trans('cruds.contentTag.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.contentTag.fields.slug') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
                     <tr>
                         <td>
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -62,9 +56,6 @@
                             </td>
                             <td>
                                 {{ $contentTag->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $contentTag->slug ?? '' }}
                             </td>
                             <td>
                                 @can('content_tag_show')
@@ -145,7 +136,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 let visibleColumnsIndexes = null;
 $('.datatable thead').on('input', '.search', function () {
       let strict = $(this).attr('strict') || false

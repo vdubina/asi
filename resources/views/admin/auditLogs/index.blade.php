@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-AuditLog">
+        <table class=" table table-striped compact  table-hover ajaxTable datatable datatable-AuditLog">
             <thead>
                 <tr>
                     <th width="10">
@@ -51,7 +51,7 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-  
+
   let dtOverrideGlobals = {
     buttons: dtButtons,
     processing: true,
@@ -79,7 +79,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 });
 
 </script>
