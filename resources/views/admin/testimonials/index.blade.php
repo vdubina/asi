@@ -16,11 +16,14 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact  table-hover datatable datatable-Testimonial">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Testimonial">
                 <thead>
                     <tr>
                         <th width="10">
 
+                        </th>
+                        <th>
+                            {{ trans('cruds.testimonial.fields.id') }}
                         </th>
                         <th>
                             {{ trans('cruds.testimonial.fields.title') }}
@@ -29,8 +32,34 @@
                             {{ trans('cruds.testimonial.fields.field_label') }}
                         </th>
                         <th>
+                            {{ trans('cruds.testimonial.fields.show_on_pages') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($content_pages as $key => $item)
+                                    <option value="{{ $item->title }}">{{ $item->title }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,10 +69,18 @@
 
                             </td>
                             <td>
+                                {{ $testimonial->id ?? '' }}
+                            </td>
+                            <td>
                                 {{ $testimonial->title ?? '' }}
                             </td>
                             <td>
                                 {{ $testimonial->field_label ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($testimonial->show_on_pages as $key => $item)
+                                    <span class="badge badge-info">{{ $item->title }}</span>
+                                @endforeach
                             </td>
                             <td>
                                 @can('testimonial_show')
@@ -124,6 +161,28 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
+  
+let visibleColumnsIndexes = null;
+$('.datatable thead').on('input', '.search', function () {
+      let strict = $(this).attr('strict') || false
+      let value = strict && this.value ? "^" + this.value + "$" : this.value
+
+      let index = $(this).parent().index()
+      if (visibleColumnsIndexes !== null) {
+        index = visibleColumnsIndexes[index]
+      }
+
+      table
+        .column(index)
+        .search(value, strict)
+        .draw()
+  });
+table.on('column-visibility.dt', function(e, settings, column, state) {
+      visibleColumnsIndexes = []
+      table.columns(":visible").every(function(colIdx) {
+          visibleColumnsIndexes.push(colIdx);
+      });
+  })
 })
 
 </script>

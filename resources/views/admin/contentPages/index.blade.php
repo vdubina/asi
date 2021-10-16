@@ -16,11 +16,14 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact  table-hover datatable datatable-ContentPage">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-ContentPage">
                 <thead>
                     <tr>
                         <th width="10">
 
+                        </th>
+                        <th>
+                            {{ trans('cruds.contentPage.fields.id') }}
                         </th>
                         <th>
                             {{ trans('cruds.contentPage.fields.title') }}
@@ -29,8 +32,55 @@
                             {{ trans('cruds.contentPage.fields.category') }}
                         </th>
                         <th>
+                            {{ trans('cruds.contentPage.fields.tag') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.contentPage.fields.excerpt') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.contentPage.fields.featured_image') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.contentPage.fields.field_is_subsite_content') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($content_categories as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($content_tags as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,12 +90,34 @@
 
                             </td>
                             <td>
+                                {{ $contentPage->id ?? '' }}
+                            </td>
+                            <td>
                                 {{ $contentPage->title ?? '' }}
                             </td>
                             <td>
                                 @foreach($contentPage->categories as $key => $item)
                                     <span class="badge badge-info">{{ $item->name }}</span>
                                 @endforeach
+                            </td>
+                            <td>
+                                @foreach($contentPage->tags as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $contentPage->excerpt ?? '' }}
+                            </td>
+                            <td>
+                                @if($contentPage->featured_image)
+                                    <a href="{{ $contentPage->featured_image->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $contentPage->featured_image->getUrl('thumb') }}">
+                                    </a>
+                                @endif
+                            </td>
+                            <td>
+                                <span style="display:none">{{ $contentPage->field_is_subsite_content ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $contentPage->field_is_subsite_content ? 'checked' : '' }}>
                             </td>
                             <td>
                                 @can('content_page_show')
@@ -118,7 +190,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-ContentPage:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -126,6 +198,28 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
+  
+let visibleColumnsIndexes = null;
+$('.datatable thead').on('input', '.search', function () {
+      let strict = $(this).attr('strict') || false
+      let value = strict && this.value ? "^" + this.value + "$" : this.value
+
+      let index = $(this).parent().index()
+      if (visibleColumnsIndexes !== null) {
+        index = visibleColumnsIndexes[index]
+      }
+
+      table
+        .column(index)
+        .search(value, strict)
+        .draw()
+  });
+table.on('column-visibility.dt', function(e, settings, column, state) {
+      visibleColumnsIndexes = []
+      table.columns(":visible").every(function(colIdx) {
+          visibleColumnsIndexes.push(colIdx);
+      });
+  })
 })
 
 </script>
