@@ -16,7 +16,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact table-hover datatable datatable-TaxonomyAdService">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-TaxonomyAdService">
                 <thead>
                     <tr>
                         <th width="10">
@@ -24,9 +24,6 @@
                         </th>
                         <th>
                             {{ trans('cruds.taxonomyAdService.fields.name') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.taxonomyAdService.fields.field_ad_service_code') }}
                         </th>
                         <th>
                             &nbsp;
@@ -41,9 +38,6 @@
                             </td>
                             <td>
                                 {{ $taxonomyAdService->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $taxonomyAdService->field_ad_service_code ?? '' }}
                             </td>
                             <td>
                                 @can('taxonomy_ad_service_show')
@@ -124,7 +118,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
+  
 })
 
 </script>

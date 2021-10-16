@@ -16,20 +16,14 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact table-hover datatable datatable-Role">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Role">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.role.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.role.fields.title') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.role.fields.permissions') }}
                         </th>
                         <th>
                             &nbsp;
@@ -43,15 +37,7 @@
 
                             </td>
                             <td>
-                                {{ $role->id ?? '' }}
-                            </td>
-                            <td>
                                 {{ $role->title ?? '' }}
-                            </td>
-                            <td>
-                                @foreach($role->permissions as $key => $item)
-                                    <span class="badge badge-info">{{ $item->title }}</span>
-                                @endforeach
                             </td>
                             <td>
                                 @can('role_show')
@@ -124,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-Role:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -132,7 +118,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
+  
 })
 
 </script>

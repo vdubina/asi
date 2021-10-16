@@ -15,14 +15,11 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class=" table table-striped compact table-hover datatable datatable-fieldPracticeTypeTaxonomyWebCategories">
+                <table class=" table table-bordered table-striped table-hover datatable datatable-fieldPracticeTypeTaxonomyWebCategories">
                     <thead>
                         <tr>
                             <th width="10">
 
-                            </th>
-                            <th>
-                                {{ trans('cruds.taxonomyWebCategory.fields.id') }}
                             </th>
                             <th>
                                 {{ trans('cruds.taxonomyWebCategory.fields.name') }}
@@ -37,9 +34,6 @@
                             <tr data-entry-id="{{ $taxonomyWebCategory->id }}">
                                 <td>
 
-                                </td>
-                                <td>
-                                    {{ $taxonomyWebCategory->id ?? '' }}
                                 </td>
                                 <td>
                                     {{ $taxonomyWebCategory->name ?? '' }}
@@ -112,7 +106,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-fieldPracticeTypeTaxonomyWebCategories:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -120,7 +114,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
+  
 })
 
 </script>

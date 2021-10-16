@@ -15,14 +15,11 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class=" table table-striped compact table-hover datatable datatable-fieldSliderSliderImages">
+                <table class=" table table-bordered table-striped table-hover datatable datatable-fieldSliderSliderImages">
                     <thead>
                         <tr>
                             <th width="10">
 
-                            </th>
-                            <th>
-                                {{ trans('cruds.sliderImage.fields.id') }}
                             </th>
                             <th>
                                 {{ trans('cruds.sliderImage.fields.title') }}
@@ -40,9 +37,6 @@
                             <tr data-entry-id="{{ $sliderImage->id }}">
                                 <td>
 
-                                </td>
-                                <td>
-                                    {{ $sliderImage->id ?? '' }}
                                 </td>
                                 <td>
                                     {{ $sliderImage->title ?? '' }}
@@ -118,7 +112,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-fieldSliderSliderImages:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -126,7 +120,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
+  
 })
 
 </script>
