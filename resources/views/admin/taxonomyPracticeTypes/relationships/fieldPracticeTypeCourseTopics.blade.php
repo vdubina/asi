@@ -22,13 +22,10 @@
 
                             </th>
                             <th>
-                                {{ trans('cruds.courseTopic.fields.id') }}
-                            </th>
-                            <th>
                                 {{ trans('cruds.courseTopic.fields.title') }}
                             </th>
                             <th>
-                                {{ trans('cruds.courseTopic.fields.field_ad_code') }}
+                                {{ trans('cruds.courseTopic.fields.field_offsiteid') }}
                             </th>
                             <th>
                                 {{ trans('cruds.courseTopic.fields.field_price') }}
@@ -45,13 +42,10 @@
 
                                 </td>
                                 <td>
-                                    {{ $courseTopic->id ?? '' }}
-                                </td>
-                                <td>
                                     {{ $courseTopic->title ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $courseTopic->field_ad_code ?? '' }}
+                                    {{ $courseTopic->field_offsiteid ?? '' }}
                                 </td>
                                 <td>
                                     {{ $courseTopic->field_price ?? '' }}
@@ -124,7 +118,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-fieldPracticeTypeCourseTopics:not(.ajaxTable)').DataTable({ buttons: dtButtons })

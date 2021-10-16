@@ -26,9 +26,6 @@
                             {{ trans('cruds.taxonomyDiscountType.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyDiscountType.fields.field_amount') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -41,9 +38,6 @@
                             </td>
                             <td>
                                 {{ $taxonomyDiscountType->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $taxonomyDiscountType->field_amount ?? '' }}
                             </td>
                             <td>
                                 @can('taxonomy_discount_type_show')

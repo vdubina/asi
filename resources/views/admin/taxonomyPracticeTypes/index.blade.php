@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyPracticeType.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.taxonomyPracticeType.fields.name') }}
                         </th>
                         <th>
@@ -38,9 +35,6 @@
                         <tr data-entry-id="{{ $taxonomyPracticeType->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $taxonomyPracticeType->id ?? '' }}
                             </td>
                             <td>
                                 {{ $taxonomyPracticeType->name ?? '' }}
@@ -116,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TaxonomyPracticeType:not(.ajaxTable)').DataTable({ buttons: dtButtons })

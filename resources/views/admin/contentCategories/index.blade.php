@@ -23,13 +23,7 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.contentCategory.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.contentCategory.fields.name') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.contentCategory.fields.slug') }}
                         </th>
                         <th>
                             &nbsp;
@@ -43,13 +37,7 @@
 
                             </td>
                             <td>
-                                {{ $contentCategory->id ?? '' }}
-                            </td>
-                            <td>
                                 {{ $contentCategory->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $contentCategory->slug ?? '' }}
                             </td>
                             <td>
                                 @can('content_category_show')
@@ -122,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-ContentCategory:not(.ajaxTable)').DataTable({ buttons: dtButtons })

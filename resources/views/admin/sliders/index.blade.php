@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.slider.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.slider.fields.name') }}
                         </th>
                         <th>
@@ -35,29 +32,12 @@
                             &nbsp;
                         </th>
                     </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
                 </thead>
                 <tbody>
                     @foreach($sliders as $key => $slider)
                         <tr data-entry-id="{{ $slider->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $slider->id ?? '' }}
                             </td>
                             <td>
                                 {{ $slider->name ?? '' }}
@@ -137,7 +117,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-Slider:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -146,27 +126,6 @@
           .columns.adjust();
   });
   
-let visibleColumnsIndexes = null;
-$('.datatable thead').on('input', '.search', function () {
-      let strict = $(this).attr('strict') || false
-      let value = strict && this.value ? "^" + this.value + "$" : this.value
-
-      let index = $(this).parent().index()
-      if (visibleColumnsIndexes !== null) {
-        index = visibleColumnsIndexes[index]
-      }
-
-      table
-        .column(index)
-        .search(value, strict)
-        .draw()
-  });
-table.on('column-visibility.dt', function(e, settings, column, state) {
-      visibleColumnsIndexes = []
-      table.columns(":visible").every(function(colIdx) {
-          visibleColumnsIndexes.push(colIdx);
-      });
-  })
 })
 
 </script>

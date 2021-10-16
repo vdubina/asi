@@ -24,9 +24,7 @@ class SliderController extends Controller
 
         $sliders = Slider::with(['show_on_pages'])->get();
 
-        $content_categories = ContentCategory::get();
-
-        return view('admin.sliders.index', compact('sliders', 'content_categories'));
+        return view('admin.sliders.index', compact('sliders'));
     }
 
     public function create()

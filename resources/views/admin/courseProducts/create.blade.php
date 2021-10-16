@@ -10,20 +10,20 @@
         <form method="POST" action="{{ route("admin.course-products.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="required" for="sku">{{ trans('cruds.courseProduct.fields.sku') }}</label>
-                <input class="form-control {{ $errors->has('sku') ? 'is-invalid' : '' }}" type="text" name="sku" id="sku" value="{{ old('sku', '') }}" required>
-                @if($errors->has('sku'))
-                    <span class="text-danger">{{ $errors->first('sku') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.courseProduct.fields.sku_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.courseProduct.fields.title') }}</label>
                 <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
                 @if($errors->has('title'))
                     <span class="text-danger">{{ $errors->first('title') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.courseProduct.fields.title_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="sku">{{ trans('cruds.courseProduct.fields.sku') }}</label>
+                <input class="form-control {{ $errors->has('sku') ? 'is-invalid' : '' }}" type="text" name="sku" id="sku" value="{{ old('sku', '') }}" required>
+                @if($errors->has('sku'))
+                    <span class="text-danger">{{ $errors->first('sku') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.courseProduct.fields.sku_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="commerce_price">{{ trans('cruds.courseProduct.fields.commerce_price') }}</label>

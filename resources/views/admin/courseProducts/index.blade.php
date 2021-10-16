@@ -35,6 +35,9 @@
                             {{ trans('cruds.courseProduct.fields.status') }}
                         </th>
                         <th>
+                            {{ trans('cruds.courseProduct.fields.field_offsiteid') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -48,9 +51,12 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
-
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                         </td>
@@ -74,6 +80,9 @@
                             <td>
                                 <span style="display:none">{{ $courseProduct->status ?? '' }}</span>
                                 <input type="checkbox" disabled="disabled" {{ $courseProduct->status ? 'checked' : '' }}>
+                            </td>
+                            <td>
+                                {{ $courseProduct->field_offsiteid ?? '' }}
                             </td>
                             <td>
                                 @can('course_product_show')

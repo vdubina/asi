@@ -24,9 +24,7 @@ class CourseInstructorController extends Controller
 
         $courseInstructors = CourseInstructor::with(['field_course_products', 'media'])->get();
 
-        $course_products = CourseProduct::get();
-
-        return view('admin.courseInstructors.index', compact('courseInstructors', 'course_products'));
+        return view('admin.courseInstructors.index', compact('courseInstructors'));
     }
 
     public function create()

@@ -22,19 +22,19 @@
 
                             </th>
                             <th>
-                                {{ trans('cruds.courseProduct.fields.id') }}
+                                {{ trans('cruds.courseProduct.fields.title') }}
                             </th>
                             <th>
                                 {{ trans('cruds.courseProduct.fields.sku') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.courseProduct.fields.title') }}
                             </th>
                             <th>
                                 {{ trans('cruds.courseProduct.fields.commerce_price') }}
                             </th>
                             <th>
                                 {{ trans('cruds.courseProduct.fields.status') }}
+                            </th>
+                            <th>
+                                {{ trans('cruds.courseProduct.fields.field_offsiteid') }}
                             </th>
                             <th>
                                 &nbsp;
@@ -48,13 +48,10 @@
 
                                 </td>
                                 <td>
-                                    {{ $courseProduct->id ?? '' }}
+                                    {{ $courseProduct->title ?? '' }}
                                 </td>
                                 <td>
                                     {{ $courseProduct->sku ?? '' }}
-                                </td>
-                                <td>
-                                    {{ $courseProduct->title ?? '' }}
                                 </td>
                                 <td>
                                     {{ $courseProduct->commerce_price ?? '' }}
@@ -62,6 +59,9 @@
                                 <td>
                                     <span style="display:none">{{ $courseProduct->status ?? '' }}</span>
                                     <input type="checkbox" disabled="disabled" {{ $courseProduct->status ? 'checked' : '' }}>
+                                </td>
+                                <td>
+                                    {{ $courseProduct->field_offsiteid ?? '' }}
                                 </td>
                                 <td>
                                     @can('course_product_show')
@@ -131,7 +131,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 2, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-fieldCourseCreditTypeCourseProducts:not(.ajaxTable)').DataTable({ buttons: dtButtons })

@@ -11,6 +11,14 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+                <label class="required" for="question">{{ trans('cruds.faqQuestion.fields.question') }}</label>
+                <textarea class="form-control {{ $errors->has('question') ? 'is-invalid' : '' }}" name="question" id="question" required>{{ old('question', $faqQuestion->question) }}</textarea>
+                @if($errors->has('question'))
+                    <span class="text-danger">{{ $errors->first('question') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.faqQuestion.fields.question_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="category_id">{{ trans('cruds.faqQuestion.fields.category') }}</label>
                 <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id" required>
                     @foreach($categories as $id => $entry)
@@ -21,14 +29,6 @@
                     <span class="text-danger">{{ $errors->first('category') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.faqQuestion.fields.category_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="question">{{ trans('cruds.faqQuestion.fields.question') }}</label>
-                <textarea class="form-control {{ $errors->has('question') ? 'is-invalid' : '' }}" name="question" id="question" required>{{ old('question', $faqQuestion->question) }}</textarea>
-                @if($errors->has('question'))
-                    <span class="text-danger">{{ $errors->first('question') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.faqQuestion.fields.question_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="answer">{{ trans('cruds.faqQuestion.fields.answer') }}</label>

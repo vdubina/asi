@@ -29,9 +29,6 @@
                             {{ trans('cruds.role.fields.title') }}
                         </th>
                         <th>
-                            {{ trans('cruds.role.fields.permissions') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -47,11 +44,6 @@
                             </td>
                             <td>
                                 {{ $role->title ?? '' }}
-                            </td>
-                            <td>
-                                @foreach($role->permissions as $key => $item)
-                                    <span class="badge badge-info">{{ $item->title }}</span>
-                                @endforeach
                             </td>
                             <td>
                                 @can('role_show')
@@ -124,7 +116,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 2, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-Role:not(.ajaxTable)').DataTable({ buttons: dtButtons })

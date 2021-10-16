@@ -28,9 +28,6 @@
                                 {{ trans('cruds.userAlert.fields.alert_link') }}
                             </th>
                             <th>
-                                {{ trans('cruds.userAlert.fields.user') }}
-                            </th>
-                            <th>
                                 {{ trans('cruds.userAlert.fields.created_at') }}
                             </th>
                             <th>
@@ -49,11 +46,6 @@
                                 </td>
                                 <td>
                                     {{ $userAlert->alert_link ?? '' }}
-                                </td>
-                                <td>
-                                    @foreach($userAlert->users as $key => $item)
-                                        <span class="badge badge-info">{{ $item->name }}</span>
-                                    @endforeach
                                 </td>
                                 <td>
                                     {{ $userAlert->created_at ?? '' }}
@@ -121,7 +113,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-userUserAlerts:not(.ajaxTable)').DataTable({ buttons: dtButtons })

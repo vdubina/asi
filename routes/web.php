@@ -39,9 +39,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('faq-questions/destroy', 'FaqQuestionController@massDestroy')->name('faq-questions.massDestroy');
     Route::resource('faq-questions', 'FaqQuestionController');
 
-    // Audit Logs
-    Route::resource('audit-logs', 'AuditLogsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
-
     // Taxonomy Course
     Route::delete('taxonomy-courses/destroy', 'TaxonomyCourseController@massDestroy')->name('taxonomy-courses.massDestroy');
     Route::post('taxonomy-courses/media', 'TaxonomyCourseController@storeMedia')->name('taxonomy-courses.storeMedia');

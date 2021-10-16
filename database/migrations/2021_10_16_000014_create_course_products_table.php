@@ -10,8 +10,8 @@ class CreateCourseProductsTable extends Migration
     {
         Schema::create('course_products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('sku');
             $table->string('title')->nullable();
+            $table->string('sku');
             $table->decimal('commerce_price', 15, 2)->nullable();
             $table->boolean('status')->default(0)->nullable();
             $table->longText('field_description')->nullable();

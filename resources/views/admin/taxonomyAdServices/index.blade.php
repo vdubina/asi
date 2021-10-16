@@ -26,9 +26,6 @@
                             {{ trans('cruds.taxonomyAdService.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyAdService.fields.field_ad_service_code') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -41,9 +38,6 @@
                             </td>
                             <td>
                                 {{ $taxonomyAdService->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $taxonomyAdService->field_ad_service_code ?? '' }}
                             </td>
                             <td>
                                 @can('taxonomy_ad_service_show')

@@ -36,7 +36,7 @@
                         <td>
                         </td>
                         <td>
-
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <select class="search">
@@ -133,7 +133,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-FaqQuestion:not(.ajaxTable)').DataTable({ buttons: dtButtons })

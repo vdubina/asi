@@ -22,16 +22,13 @@
 
                             </th>
                             <th>
-                                {{ trans('cruds.testimonial.fields.id') }}
-                            </th>
-                            <th>
                                 {{ trans('cruds.testimonial.fields.title') }}
                             </th>
                             <th>
                                 {{ trans('cruds.testimonial.fields.field_label') }}
                             </th>
                             <th>
-                                {{ trans('cruds.testimonial.fields.show_on_pages') }}
+                                {{ trans('cruds.testimonial.fields.field_testimonial_type') }}
                             </th>
                             <th>
                                 &nbsp;
@@ -45,17 +42,14 @@
 
                                 </td>
                                 <td>
-                                    {{ $testimonial->id ?? '' }}
-                                </td>
-                                <td>
                                     {{ $testimonial->title ?? '' }}
                                 </td>
                                 <td>
                                     {{ $testimonial->field_label ?? '' }}
                                 </td>
                                 <td>
-                                    @foreach($testimonial->show_on_pages as $key => $item)
-                                        <span class="badge badge-info">{{ $item->title }}</span>
+                                    @foreach($testimonial->field_testimonial_types as $key => $item)
+                                        <span class="badge badge-info">{{ $item->name }}</span>
                                     @endforeach
                                 </td>
                                 <td>
@@ -126,7 +120,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-fieldTestimonialTypeTestimonials:not(.ajaxTable)').DataTable({ buttons: dtButtons })

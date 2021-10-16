@@ -24,9 +24,7 @@ class SliderImageController extends Controller
 
         $sliderImages = SliderImage::with(['field_sliders', 'media'])->get();
 
-        $sliders = Slider::get();
-
-        return view('admin.sliderImages.index', compact('sliderImages', 'sliders'));
+        return view('admin.sliderImages.index', compact('sliderImages'));
     }
 
     public function create()

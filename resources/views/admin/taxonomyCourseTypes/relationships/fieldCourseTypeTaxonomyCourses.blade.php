@@ -22,13 +22,7 @@
 
                             </th>
                             <th>
-                                {{ trans('cruds.taxonomyCourse.fields.id') }}
-                            </th>
-                            <th>
                                 {{ trans('cruds.taxonomyCourse.fields.name') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.taxonomyCourse.fields.field_available') }}
                             </th>
                             <th>
                                 &nbsp;
@@ -42,14 +36,7 @@
 
                                 </td>
                                 <td>
-                                    {{ $taxonomyCourse->id ?? '' }}
-                                </td>
-                                <td>
                                     {{ $taxonomyCourse->name ?? '' }}
-                                </td>
-                                <td>
-                                    <span style="display:none">{{ $taxonomyCourse->field_available ?? '' }}</span>
-                                    <input type="checkbox" disabled="disabled" {{ $taxonomyCourse->field_available ? 'checked' : '' }}>
                                 </td>
                                 <td>
                                     @can('taxonomy_course_show')
@@ -119,7 +106,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-fieldCourseTypeTaxonomyCourses:not(.ajaxTable)').DataTable({ buttons: dtButtons })

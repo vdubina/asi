@@ -25,18 +25,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.faqQuestion.fields.category') }}
-                        </th>
-                        <td>
-                            {{ $faqQuestion->category->category ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.faqQuestion.fields.question') }}
                         </th>
                         <td>
                             {{ $faqQuestion->question }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.faqQuestion.fields.category') }}
+                        </th>
+                        <td>
+                            {{ $faqQuestion->category->category ?? '' }}
                         </td>
                     </tr>
                     <tr>

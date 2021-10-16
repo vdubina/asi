@@ -22,9 +22,6 @@
 
                             </th>
                             <th>
-                                {{ trans('cruds.taxonomyWebCategory.fields.id') }}
-                            </th>
-                            <th>
                                 {{ trans('cruds.taxonomyWebCategory.fields.name') }}
                             </th>
                             <th>
@@ -37,9 +34,6 @@
                             <tr data-entry-id="{{ $taxonomyWebCategory->id }}">
                                 <td>
 
-                                </td>
-                                <td>
-                                    {{ $taxonomyWebCategory->id ?? '' }}
                                 </td>
                                 <td>
                                     {{ $taxonomyWebCategory->name ?? '' }}
@@ -112,7 +106,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-fieldPracticeTypeTaxonomyWebCategories:not(.ajaxTable)').DataTable({ buttons: dtButtons })

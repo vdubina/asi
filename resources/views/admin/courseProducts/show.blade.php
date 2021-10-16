@@ -25,18 +25,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.courseProduct.fields.sku') }}
-                        </th>
-                        <td>
-                            {{ $courseProduct->sku }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.courseProduct.fields.title') }}
                         </th>
                         <td>
                             {{ $courseProduct->title }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.courseProduct.fields.sku') }}
+                        </th>
+                        <td>
+                            {{ $courseProduct->sku }}
                         </td>
                     </tr>
                     <tr>

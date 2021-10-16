@@ -30,21 +30,7 @@ class CourseTopicController extends Controller
 
         $courseTopics = CourseTopic::with(['field_course_type', 'field_course_credit_type', 'field_practice_type', 'field_armscode', 'field_web_category', 'field_ad_service', 'field_media_provider'])->get();
 
-        $taxonomy_course_types = TaxonomyCourseType::get();
-
-        $taxonomy_credit_types = TaxonomyCreditType::get();
-
-        $taxonomy_practice_types = TaxonomyPracticeType::get();
-
-        $taxonomy_arms_codes = TaxonomyArmsCode::get();
-
-        $taxonomy_web_categories = TaxonomyWebCategory::get();
-
-        $taxonomy_ad_services = TaxonomyAdService::get();
-
-        $taxonomy_media_providers = TaxonomyMediaProvider::get();
-
-        return view('admin.courseTopics.index', compact('courseTopics', 'taxonomy_course_types', 'taxonomy_credit_types', 'taxonomy_practice_types', 'taxonomy_arms_codes', 'taxonomy_web_categories', 'taxonomy_ad_services', 'taxonomy_media_providers'));
+        return view('admin.courseTopics.index', compact('courseTopics'));
     }
 
     public function create()
