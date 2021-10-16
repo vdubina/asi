@@ -119,4 +119,5 @@ td select option {
     border-radius: 3px!important;
 }
 
+.datatable th:last-child{ width: 120px; }
 
