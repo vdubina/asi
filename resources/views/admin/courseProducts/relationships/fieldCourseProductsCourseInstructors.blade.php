@@ -15,11 +15,14 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class=" table table-bordered table-striped table-hover datatable datatable-fieldCourseProductsCourseInstructors">
+                <table class=" table table-striped compact table-hover datatable datatable-fieldCourseProductsCourseInstructors">
                     <thead>
                         <tr>
                             <th width="10">
 
+                            </th>
+                            <th>
+                                {{ trans('cruds.courseInstructor.fields.id') }}
                             </th>
                             <th>
                                 {{ trans('cruds.courseInstructor.fields.name') }}
@@ -34,6 +37,9 @@
                             <tr data-entry-id="{{ $courseInstructor->id }}">
                                 <td>
 
+                                </td>
+                                <td>
+                                    {{ $courseInstructor->id ?? '' }}
                                 </td>
                                 <td>
                                     {{ $courseInstructor->name ?? '' }}
@@ -106,7 +112,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-fieldCourseProductsCourseInstructors:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -114,7 +120,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

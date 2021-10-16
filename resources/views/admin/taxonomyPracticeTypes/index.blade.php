@@ -16,11 +16,14 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-TaxonomyPracticeType">
+            <table class=" table table-striped compact table-hover datatable datatable-TaxonomyPracticeType">
                 <thead>
                     <tr>
                         <th width="10">
 
+                        </th>
+                        <th>
+                            {{ trans('cruds.taxonomyPracticeType.fields.id') }}
                         </th>
                         <th>
                             {{ trans('cruds.taxonomyPracticeType.fields.name') }}
@@ -35,6 +38,9 @@
                         <tr data-entry-id="{{ $taxonomyPracticeType->id }}">
                             <td>
 
+                            </td>
+                            <td>
+                                {{ $taxonomyPracticeType->id ?? '' }}
                             </td>
                             <td>
                                 {{ $taxonomyPracticeType->name ?? '' }}
@@ -110,7 +116,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TaxonomyPracticeType:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -118,7 +124,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

@@ -16,7 +16,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-UserAlert">
+            <table class=" table table-striped compact table-hover datatable datatable-UserAlert">
                 <thead>
                     <tr>
                         <th width="10">
@@ -27,6 +27,9 @@
                         </th>
                         <th>
                             {{ trans('cruds.userAlert.fields.alert_link') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userAlert.fields.user') }}
                         </th>
                         <th>
                             {{ trans('cruds.userAlert.fields.created_at') }}
@@ -49,6 +52,11 @@
                                 {{ $userAlert->alert_link ?? '' }}
                             </td>
                             <td>
+                                @foreach($userAlert->users as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
                                 {{ $userAlert->created_at ?? '' }}
                             </td>
                             <td>
@@ -68,7 +76,6 @@
                                 @endcan
 
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>
@@ -117,7 +124,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 4, 'desc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-UserAlert:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -125,7 +132,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

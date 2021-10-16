@@ -15,17 +15,20 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class=" table table-bordered table-striped table-hover datatable datatable-fieldCourseCreditTypeCourseTopics">
+                <table class=" table table-striped compact table-hover datatable datatable-fieldCourseCreditTypeCourseTopics">
                     <thead>
                         <tr>
                             <th width="10">
 
                             </th>
                             <th>
+                                {{ trans('cruds.courseTopic.fields.id') }}
+                            </th>
+                            <th>
                                 {{ trans('cruds.courseTopic.fields.title') }}
                             </th>
                             <th>
-                                {{ trans('cruds.courseTopic.fields.field_offsiteid') }}
+                                {{ trans('cruds.courseTopic.fields.field_ad_code') }}
                             </th>
                             <th>
                                 {{ trans('cruds.courseTopic.fields.field_price') }}
@@ -42,10 +45,13 @@
 
                                 </td>
                                 <td>
+                                    {{ $courseTopic->id ?? '' }}
+                                </td>
+                                <td>
                                     {{ $courseTopic->title ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $courseTopic->field_offsiteid ?? '' }}
+                                    {{ $courseTopic->field_ad_code ?? '' }}
                                 </td>
                                 <td>
                                     {{ $courseTopic->field_price ?? '' }}
@@ -118,7 +124,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-fieldCourseCreditTypeCourseTopics:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -126,7 +132,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

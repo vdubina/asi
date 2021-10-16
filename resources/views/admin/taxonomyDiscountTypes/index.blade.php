@@ -16,7 +16,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-TaxonomyDiscountType">
+            <table class=" table table-striped compact table-hover datatable datatable-TaxonomyDiscountType">
                 <thead>
                     <tr>
                         <th width="10">
@@ -24,6 +24,9 @@
                         </th>
                         <th>
                             {{ trans('cruds.taxonomyDiscountType.fields.name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.taxonomyDiscountType.fields.field_amount') }}
                         </th>
                         <th>
                             &nbsp;
@@ -38,6 +41,9 @@
                             </td>
                             <td>
                                 {{ $taxonomyDiscountType->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $taxonomyDiscountType->field_amount ?? '' }}
                             </td>
                             <td>
                                 @can('taxonomy_discount_type_show')
@@ -118,7 +124,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

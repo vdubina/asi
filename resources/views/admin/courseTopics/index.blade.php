@@ -16,17 +16,20 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-CourseTopic">
+            <table class=" table table-striped compact table-hover datatable datatable-CourseTopic">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
+                            {{ trans('cruds.courseTopic.fields.id') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.courseTopic.fields.title') }}
                         </th>
                         <th>
-                            {{ trans('cruds.courseTopic.fields.field_offsiteid') }}
+                            {{ trans('cruds.courseTopic.fields.field_ad_code') }}
                         </th>
                         <th>
                             {{ trans('cruds.courseTopic.fields.field_price') }}
@@ -34,6 +37,24 @@
                         <th>
                             &nbsp;
                         </th>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,10 +64,13 @@
 
                             </td>
                             <td>
+                                {{ $courseTopic->id ?? '' }}
+                            </td>
+                            <td>
                                 {{ $courseTopic->title ?? '' }}
                             </td>
                             <td>
-                                {{ $courseTopic->field_offsiteid ?? '' }}
+                                {{ $courseTopic->field_ad_code ?? '' }}
                             </td>
                             <td>
                                 {{ $courseTopic->field_price ?? '' }}
@@ -122,7 +146,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-CourseTopic:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -130,7 +154,28 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
+let visibleColumnsIndexes = null;
+$('.datatable thead').on('input', '.search', function () {
+      let strict = $(this).attr('strict') || false
+      let value = strict && this.value ? "^" + this.value + "$" : this.value
+
+      let index = $(this).parent().index()
+      if (visibleColumnsIndexes !== null) {
+        index = visibleColumnsIndexes[index]
+      }
+
+      table
+        .column(index)
+        .search(value, strict)
+        .draw()
+  });
+table.on('column-visibility.dt', function(e, settings, column, state) {
+      visibleColumnsIndexes = []
+      table.columns(":visible").every(function(colIdx) {
+          visibleColumnsIndexes.push(colIdx);
+      });
+  })
 })
 
 </script>

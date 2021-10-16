@@ -15,11 +15,14 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class=" table table-bordered table-striped table-hover datatable datatable-fieldTestimonialTypeTestimonials">
+                <table class=" table table-striped compact table-hover datatable datatable-fieldTestimonialTypeTestimonials">
                     <thead>
                         <tr>
                             <th width="10">
 
+                            </th>
+                            <th>
+                                {{ trans('cruds.testimonial.fields.id') }}
                             </th>
                             <th>
                                 {{ trans('cruds.testimonial.fields.title') }}
@@ -28,7 +31,7 @@
                                 {{ trans('cruds.testimonial.fields.field_label') }}
                             </th>
                             <th>
-                                {{ trans('cruds.testimonial.fields.field_testimonial_type') }}
+                                {{ trans('cruds.testimonial.fields.show_on_pages') }}
                             </th>
                             <th>
                                 &nbsp;
@@ -42,14 +45,17 @@
 
                                 </td>
                                 <td>
+                                    {{ $testimonial->id ?? '' }}
+                                </td>
+                                <td>
                                     {{ $testimonial->title ?? '' }}
                                 </td>
                                 <td>
                                     {{ $testimonial->field_label ?? '' }}
                                 </td>
                                 <td>
-                                    @foreach($testimonial->field_testimonial_types as $key => $item)
-                                        <span class="badge badge-info">{{ $item->name }}</span>
+                                    @foreach($testimonial->show_on_pages as $key => $item)
+                                        <span class="badge badge-info">{{ $item->title }}</span>
                                     @endforeach
                                 </td>
                                 <td>
@@ -120,7 +126,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-fieldTestimonialTypeTestimonials:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -128,7 +134,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

@@ -15,11 +15,14 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class=" table table-bordered table-striped table-hover datatable datatable-showOnPagesSliders">
+                <table class=" table table-striped compact table-hover datatable datatable-showOnPagesSliders">
                     <thead>
                         <tr>
                             <th width="10">
 
+                            </th>
+                            <th>
+                                {{ trans('cruds.slider.fields.id') }}
                             </th>
                             <th>
                                 {{ trans('cruds.slider.fields.name') }}
@@ -37,6 +40,9 @@
                             <tr data-entry-id="{{ $slider->id }}">
                                 <td>
 
+                                </td>
+                                <td>
+                                    {{ $slider->id ?? '' }}
                                 </td>
                                 <td>
                                     {{ $slider->name ?? '' }}
@@ -113,7 +119,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-showOnPagesSliders:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -121,7 +127,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

@@ -16,11 +16,14 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-CourseInstructor">
+            <table class=" table table-striped compact table-hover datatable datatable-CourseInstructor">
                 <thead>
                     <tr>
                         <th width="10">
 
+                        </th>
+                        <th>
+                            {{ trans('cruds.courseInstructor.fields.id') }}
                         </th>
                         <th>
                             {{ trans('cruds.courseInstructor.fields.name') }}
@@ -29,12 +32,27 @@
                             &nbsp;
                         </th>
                     </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach($courseInstructors as $key => $courseInstructor)
                         <tr data-entry-id="{{ $courseInstructor->id }}">
                             <td>
 
+                            </td>
+                            <td>
+                                {{ $courseInstructor->id ?? '' }}
                             </td>
                             <td>
                                 {{ $courseInstructor->name ?? '' }}
@@ -110,7 +128,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-CourseInstructor:not(.ajaxTable)').DataTable({ buttons: dtButtons })
@@ -118,7 +136,28 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
+let visibleColumnsIndexes = null;
+$('.datatable thead').on('input', '.search', function () {
+      let strict = $(this).attr('strict') || false
+      let value = strict && this.value ? "^" + this.value + "$" : this.value
+
+      let index = $(this).parent().index()
+      if (visibleColumnsIndexes !== null) {
+        index = visibleColumnsIndexes[index]
+      }
+
+      table
+        .column(index)
+        .search(value, strict)
+        .draw()
+  });
+table.on('column-visibility.dt', function(e, settings, column, state) {
+      visibleColumnsIndexes = []
+      table.columns(":visible").every(function(colIdx) {
+          visibleColumnsIndexes.push(colIdx);
+      });
+  })
 })
 
 </script>
