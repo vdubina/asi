@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyAdService.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.taxonomyAdService.fields.name') }}
                         </th>
                         <th>
@@ -41,9 +38,6 @@
                         <tr data-entry-id="{{ $taxonomyAdService->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $taxonomyAdService->id ?? '' }}
                             </td>
                             <td>
                                 {{ $taxonomyAdService->name ?? '' }}
@@ -122,7 +116,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TaxonomyAdService:not(.ajaxTable)').DataTable({ buttons: dtButtons })

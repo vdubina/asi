@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.faqCategory.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.faqCategory.fields.category') }}
                         </th>
                         <th>
@@ -38,9 +35,6 @@
                         <tr data-entry-id="{{ $faqCategory->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $faqCategory->id ?? '' }}
                             </td>
                             <td>
                                 {{ $faqCategory->category ?? '' }}
@@ -116,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-FaqCategory:not(.ajaxTable)').DataTable({ buttons: dtButtons })

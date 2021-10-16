@@ -23,13 +23,10 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.courseProduct.fields.id') }}
+                            {{ trans('cruds.courseProduct.fields.title') }}
                         </th>
                         <th>
                             {{ trans('cruds.courseProduct.fields.sku') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.courseProduct.fields.title') }}
                         </th>
                         <th>
                             {{ trans('cruds.courseProduct.fields.commerce_price') }}
@@ -51,10 +48,7 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+
                         </td>
                         <td>
                         </td>
@@ -69,13 +63,10 @@
 
                             </td>
                             <td>
-                                {{ $courseProduct->id ?? '' }}
+                                {{ $courseProduct->title ?? '' }}
                             </td>
                             <td>
                                 {{ $courseProduct->sku ?? '' }}
-                            </td>
-                            <td>
-                                {{ $courseProduct->title ?? '' }}
                             </td>
                             <td>
                                 {{ $courseProduct->commerce_price ?? '' }}
@@ -155,7 +146,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 2, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-CourseProduct:not(.ajaxTable)').DataTable({ buttons: dtButtons })

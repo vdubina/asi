@@ -23,16 +23,10 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.faqQuestion.fields.id') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.faqQuestion.fields.category') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.faqQuestion.fields.question') }}
                         </th>
                         <th>
-                            {{ trans('cruds.faqQuestion.fields.answer') }}
+                            {{ trans('cruds.faqQuestion.fields.category') }}
                         </th>
                         <th>
                             &nbsp;
@@ -42,7 +36,7 @@
                         <td>
                         </td>
                         <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+
                         </td>
                         <td>
                             <select class="search">
@@ -51,12 +45,6 @@
                                     <option value="{{ $item->category }}">{{ $item->category }}</option>
                                 @endforeach
                             </select>
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                         </td>
@@ -69,16 +57,10 @@
 
                             </td>
                             <td>
-                                {{ $faqQuestion->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $faqQuestion->category->category ?? '' }}
-                            </td>
-                            <td>
                                 {{ $faqQuestion->question ?? '' }}
                             </td>
                             <td>
-                                {{ $faqQuestion->answer ?? '' }}
+                                {{ $faqQuestion->category->category ?? '' }}
                             </td>
                             <td>
                                 @can('faq_question_show')

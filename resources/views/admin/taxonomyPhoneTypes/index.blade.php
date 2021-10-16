@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyPhoneType.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.taxonomyPhoneType.fields.name') }}
                         </th>
                         <th>
@@ -38,9 +35,6 @@
                         <tr data-entry-id="{{ $taxonomyPhoneType->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $taxonomyPhoneType->id ?? '' }}
                             </td>
                             <td>
                                 {{ $taxonomyPhoneType->name ?? '' }}
@@ -116,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TaxonomyPhoneType:not(.ajaxTable)').DataTable({ buttons: dtButtons })

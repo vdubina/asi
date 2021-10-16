@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.userAlert.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.userAlert.fields.alert_text') }}
                         </th>
                         <th>
@@ -47,9 +44,6 @@
                         <tr data-entry-id="{{ $userAlert->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $userAlert->id ?? '' }}
                             </td>
                             <td>
                                 {{ $userAlert->alert_text ?? '' }}
@@ -82,7 +76,6 @@
                                 @endcan
 
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>
@@ -131,7 +124,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 4, 'desc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-UserAlert:not(.ajaxTable)').DataTable({ buttons: dtButtons })

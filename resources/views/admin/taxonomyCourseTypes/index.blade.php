@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyCourseType.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.taxonomyCourseType.fields.name') }}
                         </th>
                         <th>
@@ -38,9 +35,6 @@
                         <tr data-entry-id="{{ $taxonomyCourseType->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $taxonomyCourseType->id ?? '' }}
                             </td>
                             <td>
                                 {{ $taxonomyCourseType->name ?? '' }}
@@ -116,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TaxonomyCourseType:not(.ajaxTable)').DataTable({ buttons: dtButtons })

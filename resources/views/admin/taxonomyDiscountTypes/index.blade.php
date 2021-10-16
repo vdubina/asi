@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyDiscountType.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.taxonomyDiscountType.fields.name') }}
                         </th>
                         <th>
@@ -41,9 +38,6 @@
                         <tr data-entry-id="{{ $taxonomyDiscountType->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $taxonomyDiscountType->id ?? '' }}
                             </td>
                             <td>
                                 {{ $taxonomyDiscountType->name ?? '' }}
@@ -122,7 +116,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TaxonomyDiscountType:not(.ajaxTable)').DataTable({ buttons: dtButtons })

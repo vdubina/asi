@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyArmsCode.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.taxonomyArmsCode.fields.name') }}
                         </th>
                         <th>
@@ -38,9 +35,6 @@
                         <tr data-entry-id="{{ $taxonomyArmsCode->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $taxonomyArmsCode->id ?? '' }}
                             </td>
                             <td>
                                 {{ $taxonomyArmsCode->name ?? '' }}
@@ -116,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TaxonomyArmsCode:not(.ajaxTable)').DataTable({ buttons: dtButtons })

@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyCertificationType.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.taxonomyCertificationType.fields.name') }}
                         </th>
                         <th>
@@ -38,9 +35,6 @@
                         <tr data-entry-id="{{ $taxonomyCertificationType->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $taxonomyCertificationType->id ?? '' }}
                             </td>
                             <td>
                                 {{ $taxonomyCertificationType->name ?? '' }}
@@ -116,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TaxonomyCertificationType:not(.ajaxTable)').DataTable({ buttons: dtButtons })

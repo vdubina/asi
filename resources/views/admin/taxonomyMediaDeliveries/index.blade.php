@@ -23,13 +23,7 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyMediaDelivery.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.taxonomyMediaDelivery.fields.name') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.taxonomyMediaDelivery.fields.field_isshipped') }}
                         </th>
                         <th>
                             &nbsp;
@@ -43,14 +37,7 @@
 
                             </td>
                             <td>
-                                {{ $taxonomyMediaDelivery->id ?? '' }}
-                            </td>
-                            <td>
                                 {{ $taxonomyMediaDelivery->name ?? '' }}
-                            </td>
-                            <td>
-                                <span style="display:none">{{ $taxonomyMediaDelivery->field_isshipped ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $taxonomyMediaDelivery->field_isshipped ? 'checked' : '' }}>
                             </td>
                             <td>
                                 @can('taxonomy_media_delivery_show')
@@ -123,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TaxonomyMediaDelivery:not(.ajaxTable)').DataTable({ buttons: dtButtons })

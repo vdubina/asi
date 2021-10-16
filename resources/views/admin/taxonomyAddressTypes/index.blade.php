@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyAddressType.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.taxonomyAddressType.fields.name') }}
                         </th>
                         <th>
@@ -38,9 +35,6 @@
                         <tr data-entry-id="{{ $taxonomyAddressType->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $taxonomyAddressType->id ?? '' }}
                             </td>
                             <td>
                                 {{ $taxonomyAddressType->name ?? '' }}
@@ -116,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TaxonomyAddressType:not(.ajaxTable)').DataTable({ buttons: dtButtons })

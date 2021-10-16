@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.testimonialType.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.testimonialType.fields.name') }}
                         </th>
                         <th>
@@ -38,9 +35,6 @@
                         <tr data-entry-id="{{ $testimonialType->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $testimonialType->id ?? '' }}
                             </td>
                             <td>
                                 {{ $testimonialType->name ?? '' }}
@@ -116,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TestimonialType:not(.ajaxTable)').DataTable({ buttons: dtButtons })

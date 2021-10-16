@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.taxonomyMediaProvider.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.taxonomyMediaProvider.fields.name') }}
                         </th>
                         <th>
@@ -38,9 +35,6 @@
                         <tr data-entry-id="{{ $taxonomyMediaProvider->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $taxonomyMediaProvider->id ?? '' }}
                             </td>
                             <td>
                                 {{ $taxonomyMediaProvider->name ?? '' }}
@@ -116,7 +110,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-TaxonomyMediaProvider:not(.ajaxTable)').DataTable({ buttons: dtButtons })
