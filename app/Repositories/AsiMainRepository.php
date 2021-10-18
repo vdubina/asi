@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Interfaces\AsiRemoteRepositoryInterface;
+use App\Repositories\Interfaces\AsiMainRepositoryInterface;
 
-class AsiRemoteRepository implements AsiRemoteRepositoryInterface
+class AsiMainRepository implements AsiMainRepositoryInterface
 {
     public function courses()
     {

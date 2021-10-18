@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces;
 
-interface AsiRemoteRepositoryInterface
+interface AsiMainRepositoryInterface
 {
     public function courses();
 

@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\AsiRemoteRepository;
-use App\Repositories\Interfaces\AsiRemoteRepositoryInterface;
+use App\Repositories\AsiMainRepository;
+use App\Repositories\Interfaces\AsiMainRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(AsiRemoteRepositoryInterface::class, AsiRemoteRepository::class);
+        $this->app->bind(AsiMainRepositoryInterface::class, AsiMainRepository::class);
     }
 
     /**
