@@ -38,9 +38,30 @@ class AsiRemotePopulate extends Command
      */
     public function handle(AsiRemoteRepositoryInterface $repository)
     {
-        $this->comment(count($repository->courses()).' courses processed');
-        $this->comment(count($repository->topics()).' topics processed');
-        $this->comment(count($repository->taxonomy()).' taxonomy processed');
+        $courses = $repository->courses();
+        $this->newLine();
+        $this->comment('Processing Courses');
+        $this->withProgressBar($courses, function($course) {
+           sleep(2);
+        });
+
+
+        $topics = $repository->topics();
+        $this->newLine();
+        $this->comment('Processing Topics');
+        $this->withProgressBar($topics, function($topic) {
+            sleep(2);
+        });
+
+
+        $taxonomy = $repository->taxonomy();
+        $this->newLine();
+        $this->comment('Processing Taxonomy');
+        $this->withProgressBar($taxonomy, function($taxonomy) {
+            sleep(2);
+        });
+
+        $this->newLine();
         $this->info('Task Complete');
         return Command::SUCCESS;
     }
