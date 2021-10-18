@@ -74,10 +74,14 @@ body {
 
 .btn {
     font-size:0.9rem!important;
+    line-height:1!important;
+    padding-left:7px!important;
+    padding-right:7px!important;
 }
 
 .card-header {
     font-size:1.2rem!important;
+    color:#007bff!important;
 }
 
 .pagination a, .pagination a:hover {
@@ -130,4 +134,9 @@ td select option {
 
 .brand-image {
     margin-left:10px!important;
+}
+
+.dropdown-item a {
+    font-size:0.8rem!important;
+    color:#007bff!important;
 }

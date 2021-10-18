@@ -6,9 +6,8 @@ use App\Repositories\Interfaces\SampleRepositoryInterface;
 
 class HomeController
 {
-    public function index(SampleRepositoryInterface $sampleRepository)
+    public function index()
     {
-        // $sampleRepository->all()
         return view('home');
     }
 }
