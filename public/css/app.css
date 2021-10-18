@@ -1,7 +1,7 @@
 .nav-link {
     font-size:0.9rem!important;
-    padding-top: 4px!important;
-    padding-bottom: 4px!important;
+    padding-top: 5px!important;
+    padding-bottom: 5px!important;
 }
 
 .nav-icon {
@@ -124,3 +124,10 @@ td select option {
 
 .datatable th:last-child{ width: 120px; }
 
+.brand-text {
+    font-size:0.8rem!important;
+}
+
+.brand-image {
+    margin-left:10px!important;
+}
