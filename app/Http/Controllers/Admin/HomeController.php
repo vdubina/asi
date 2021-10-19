@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Repositories\Interfaces\SampleRepositoryInterface;
+use App\Http\Controllers\Controller;
 
-class HomeController
+class HomeController extends Controller
 {
     public function index()
     {
