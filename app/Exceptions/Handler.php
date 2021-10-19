@@ -34,6 +34,7 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
+        /* Resource Not Found Api Exception */
         $this->renderable(function (NotFoundHttpException $e, $request) {
             if ($request->is('api/*')) {
                 return response()->json([
@@ -43,7 +44,7 @@ class Handler extends ExceptionHandler
             return $e;
         });
 
-
+        /* Application Error Api Exception */
         if (!config('app.debug')) {
             $this->renderable(function (Throwable $e, $request) {
                 if ($request->is('api/*')) {
