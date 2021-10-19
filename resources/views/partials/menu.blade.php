@@ -1,9 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 917px;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <img src="/images/ASI-whitelogo.png" alt="{{ trans('panel.site_title') }}" class="brand-image" style="opacity: .8">
         <span class="brand-text font-weight-light">{{ trans('panel.site_title') }}</span>
-        <br/>
     </a>
 
     <!-- Sidebar -->
