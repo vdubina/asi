@@ -15,7 +15,7 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class=" table table-striped compact table-hover datatable datatable-fieldTestimonialTypeTestimonials">
+                <table class=" table table-bordered table-striped table-hover datatable datatable-fieldTestimonialTypeTestimonials">
                     <thead>
                         <tr>
                             <th width="10">
@@ -128,7 +128,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
+  
 })
 
 </script>
