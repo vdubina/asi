@@ -17,6 +17,7 @@ class CourseTopicApiController extends Controller
 
     public function index()
     {
+        $a = 5/0;
         return new CourseTopicResource(CourseTopic::with(['field_course_type', 'field_course_credit_type', 'field_practice_type', 'field_armscode', 'field_web_category', 'field_ad_service', 'field_media_provider'])->get());
     }
 

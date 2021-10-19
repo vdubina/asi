@@ -11,7 +11,7 @@ use Closure;
 class ForceJsonRequest extends Middleware
 {
     /**
-     * Sets the Accept header to application/json for API routes
+     * Sets "Accept" header to "application/json" for API routes
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

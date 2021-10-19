@@ -34,21 +34,27 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e, $request) {
-            if ($request->is('api/*')) {
-                return response()->json([
-                    'message' => $e->getMessage()
-                ], $e->getCode());
-            }
-        });
-
         $this->renderable(function (NotFoundHttpException $e, $request) {
             if ($request->is('api/*')) {
                 return response()->json([
                     'message' => 'Resource not found.'
                 ], 404);
             }
+            return $e;
         });
+
+
+        if (!config('app.debug')) {
+            $this->renderable(function (Throwable $e, $request) {
+                if ($request->is('api/*')) {
+                    return response()->json([
+                        'message' => 'Application Error.'
+                    ], 500);
+                }
+                return $e;
+            });
+        }
+
 
     }
 }
