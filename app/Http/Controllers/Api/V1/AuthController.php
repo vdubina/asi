@@ -18,11 +18,12 @@ class AuthController extends ApiController
 
     /**
      * User Login
+     *
      * @param AuthLoginRequest $request
      */
     public function login(AuthLoginRequest $request)
     {
-        $response = Http::asJson()->post(env('PASSPORT_URL').'/oauth/token', [
+        $response = Http::asJson()->post(env('PASSPORT_URL') . '/oauth/token', [
             'grant_type' => 'password',
             'client_id' => env('PASSPORT_CLIENT'),
             'client_secret' => env('PASSPORT_SECRET'),
@@ -35,27 +36,28 @@ class AuthController extends ApiController
 
     /**
      * User Logout
+     *
      * @param AuthLoginRequest $request
      */
     public function logout(Request $request)
     {
-        $accessToken = $request->user()->token();
+        $token = $request->user()->token();
         DB::table('oauth_refresh_tokens')
-            ->where('access_token_id', $accessToken->id)
-            ->update([
-                'revoked' => true
-            ]);
-        $accessToken->revoke();
+            ->where('access_token_id', $token->id)
+            ->update(['revoked' => true]);
+
+        $token->revoke();
         return $this->respondWithSuccess();
     }
 
     /**
      * Refresh Access Token
+     *
      * @param AuthLoginRequest $request
      */
     public function refresh(AuthRefreshRequest $request)
     {
-        $response = Http::asJson()->post(env('PASSPORT_URL').'/oauth/token', [
+        $response = Http::asJson()->post(env('PASSPORT_URL') . '/oauth/token', [
             'grant_type' => 'refresh_token',
             'client_id' => env('PASSPORT_CLIENT'),
             'client_secret' => env('PASSPORT_SECRET'),

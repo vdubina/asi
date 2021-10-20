@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use F9Web\ApiResponseHelpers;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Available Response Helpers:
@@ -18,4 +20,14 @@ use F9Web\ApiResponseHelpers;
 class ApiController extends Controller
 {
     use ApiResponseHelpers;
+
+    /**
+     * @param $permission
+     */
+    public function checkGate($permission)
+    {
+        abort_if(
+            Gate::forUser(request()->user())->denies($permission), Response::HTTP_FORBIDDEN, '403 Forbidden'
+        );
+    }
 }
