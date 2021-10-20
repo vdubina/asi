@@ -19,7 +19,6 @@
         "laravel/dusk": "^6.11",
         "laravel/framework": "^8.12",
         "laravel/passport": "^10.1",
-        "laravel/sanctum": "^2.8",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "laraveldaily/laravel-charts": "^0.1.24",
