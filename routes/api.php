@@ -1,16 +1,22 @@
 <?php
 
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
-    // Course Product
-    Route::post('course-products/media', 'CourseProductApiController@storeMedia')->name('course-products.storeMedia');
-    Route::apiResource('course-products', 'CourseProductApiController');
+/* Admin Api Routes */
+Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:api', 'scopes:admin']], function () {
 
-    // Course Instructor
-    Route::post('course-instructors/media', 'CourseInstructorApiController@storeMedia')->name('course-instructors.storeMedia');
-    Route::apiResource('course-instructors', 'CourseInstructorApiController');
 });
 
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Frontend', 'middleware' => ['api']], function () {
-    // Course Topics List
+/* Auth Api Routes */
+Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1', 'middleware' => ['api']], function () {
+    Route::post('auth/login', 'AuthController@login')->name('auth.login');
+    Route::post('auth/refresh', 'AuthController@refresh')->name('auth.refresh');
+    Route::post('auth/logout', 'AuthController@logout')->name('auth.logout')->middleware('auth:api');
+});
+
+
+/* Frontend Api Routes */
+Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Frontend', 'middleware' => ['api', 'auth:api', 'scopes:frontend']], function () {
+    /* Topics */
     Route::apiResource('course-topics', 'CourseTopicApiController');
+    Route::apiResource('course-products', 'CourseProductApiController');
+    Route::apiResource('course-instructors', 'CourseInstructorApiController');
 });

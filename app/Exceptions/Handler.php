@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -38,24 +39,12 @@ class Handler extends ExceptionHandler
         $this->renderable(function (NotFoundHttpException $e, $request) {
             if ($request->is('api/*')) {
                 return response()->json([
+                    'error' => true,
                     'message' => 'Resource not found.'
                 ], 404);
             }
             return $e;
         });
-
-        /* Application Error Api Exception */
-        if (!config('app.debug')) {
-            $this->renderable(function (Throwable $e, $request) {
-                if ($request->is('api/*')) {
-                    return response()->json([
-                        'message' => 'Application Error.'
-                    ], 500);
-                }
-                return $e;
-            });
-        }
-
 
     }
 }
