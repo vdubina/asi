@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreCourseProductRequest;
 use App\Http\Requests\UpdateCourseProductRequest;
@@ -12,7 +12,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CourseProductApiController extends Controller
+class CourseProductApiController extends ApiController
 {
     use MediaUploadingTrait;
 

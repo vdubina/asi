@@ -511,6 +511,18 @@
                         </ul>
                     </li>
                 @endcan
+                @can('dev_documentation_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.documentation") }}" class="nav-link {{ request()->is("admin/documentation") ? "active" : "" }}">
+                    <i class="fa-fw nav-icon fas fa-book">
+
+                    </i>
+                    <p>
+                        {{ trans('global.apidocumentation') }}
+                    </p>
+                    </a>
+                </li>
+                @endcan
                 <li class="nav-item">
                     <a href="{{ route("admin.systemCalendar") }}" class="nav-link {{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "active" : "" }}">
                         <i class="fas fa-fw fa-calendar nav-icon">

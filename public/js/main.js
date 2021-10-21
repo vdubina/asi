@@ -69,3 +69,11 @@ $(document).ready(function () {
     }, 350);
   })
 })
+
+function resizeSwagger(obj) {
+    obj.style.height = (obj.contentWindow.document.documentElement.scrollHeight + 300) + 'px';
+
+    var new_style_element = document.createElement("style");
+    new_style_element.textContent = ".information-container { display: none; }"
+    obj.contentDocument.head.appendChild(new_style_element);
+}

@@ -19,7 +19,7 @@ class ForceJsonRequest extends Middleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        if ($request->is('api/*')) {
+        if ($request->is('api/*') && !$request->is('api/documentation')) {
             $request->headers->set('Accept', 'application/json');
         }
         return $next($request);

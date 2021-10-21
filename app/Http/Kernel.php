@@ -30,6 +30,7 @@ class Kernel extends HttpKernel
         '2fa'              => \App\Http\Middleware\TwoFactorMiddleware::class,
         'scopes' => \Laravel\Passport\Http\Middleware\CheckScopes::class,
         'scope' => \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,
+        'basicAuth' => \App\Http\Middleware\BasicAuth::class
     ];
 
     protected $middlewareGroups = [

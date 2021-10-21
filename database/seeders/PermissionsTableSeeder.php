@@ -678,6 +678,10 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 167,
                 'title' => 'profile_password_edit',
             ],
+            [
+                'id'    => 100001,
+                'title' => 'dev_documentation_access',
+            ],
         ];
 
         Permission::insert($permissions);

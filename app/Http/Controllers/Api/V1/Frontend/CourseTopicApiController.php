@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1\Frontend;
 
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Resources\Frontend\CourseTopicResource;
 use App\Models\CourseTopic;
