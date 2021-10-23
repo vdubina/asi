@@ -33,6 +33,10 @@ class StoreContentPageRequest extends FormRequest
             'tags' => [
                 'array',
             ],
+            'slider_id' => [
+                'integer',
+                'nullable'
+            ],
         ];
     }
 }

@@ -37,6 +37,7 @@
 
                             </td>
                             <td>
+                                <small>{{ $contentCategory->ancestors->count() ? implode(' > ', $contentCategory->ancestors->pluck('name')->toArray()) : '' }}</small>
                                 {{ $contentCategory->name ?? '' }}
                             </td>
                             <td>

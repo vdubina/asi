@@ -6,11 +6,13 @@ use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Kalnoy\Nestedset\NodeTrait;
 
 class ContentCategory extends Model
 {
     use SoftDeletes;
     use HasFactory;
+    use NodeTrait;
 
     public $table = 'content_categories';
 
@@ -28,10 +30,6 @@ class ContentCategory extends Model
         'deleted_at',
     ];
 
-    public function showOnPagesSliders()
-    {
-        return $this->belongsToMany(Slider::class);
-    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

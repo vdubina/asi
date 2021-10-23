@@ -41,16 +41,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.slider.fields.show_on_pages') }}
-                        </th>
-                        <td>
-                            @foreach($slider->show_on_pages as $key => $show_on_pages)
-                                <span class="label label-info">{{ $show_on_pages->name }}</span>
-                            @endforeach
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.slider.fields.field_is_subsite_content') }}
                         </th>
                         <td>

@@ -346,7 +346,7 @@
                 @can('content_management_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/content-categories*") ? "menu-open" : "" }} {{ request()->is("admin/content-tags*") ? "menu-open" : "" }} {{ request()->is("admin/content-pages*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon fas fa-book">
+                            <i class="fa-fw nav-icon fas fa-feather">
 
                             </i>
                             <p>
@@ -358,7 +358,7 @@
                             @can('content_category_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.content-categories.index") }}" class="nav-link {{ request()->is("admin/content-categories") || request()->is("admin/content-categories/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-folder">
+                                        <i class="fa-fw nav-icon fas fa-sitemap">
 
                                         </i>
                                         <p>

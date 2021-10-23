@@ -26,22 +26,6 @@
                 <span class="help-block">{{ trans('cruds.slider.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="show_on_pages">{{ trans('cruds.slider.fields.show_on_pages') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
-                <select class="form-control select2 {{ $errors->has('show_on_pages') ? 'is-invalid' : '' }}" name="show_on_pages[]" id="show_on_pages" multiple>
-                    @foreach($show_on_pages as $id => $show_on_page)
-                        <option value="{{ $id }}" {{ in_array($id, old('show_on_pages', [])) ? 'selected' : '' }}>{{ $show_on_page }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('show_on_pages'))
-                    <span class="text-danger">{{ $errors->first('show_on_pages') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.slider.fields.show_on_pages_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <div class="form-check {{ $errors->has('field_is_subsite_content') ? 'is-invalid' : '' }}">
                     <input type="hidden" name="field_is_subsite_content" value="0">
                     <input class="form-check-input" type="checkbox" name="field_is_subsite_content" id="field_is_subsite_content" value="1" {{ old('field_is_subsite_content', 0) == 1 ? 'checked' : '' }}>

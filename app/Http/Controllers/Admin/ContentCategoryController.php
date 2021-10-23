@@ -54,8 +54,6 @@ class ContentCategoryController extends Controller
     {
         abort_if(Gate::denies('content_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contentCategory->load('showOnPagesSliders');
-
         return view('admin.contentCategories.show', compact('contentCategory'));
     }
 
