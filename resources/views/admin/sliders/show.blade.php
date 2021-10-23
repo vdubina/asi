@@ -13,7 +13,7 @@
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
-            <table class="table table-striped compact">
+            <table class="table table-bordered table-striped">
                 <tbody>
                     <tr>
                         <th>
@@ -37,6 +37,16 @@
                         </th>
                         <td>
                             {!! $slider->description !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.slider.fields.show_on_pages') }}
+                        </th>
+                        <td>
+                            @foreach($slider->show_on_pages as $key => $show_on_pages)
+                                <span class="label label-info">{{ $show_on_pages->name }}</span>
+                            @endforeach
                         </td>
                     </tr>
                     <tr>

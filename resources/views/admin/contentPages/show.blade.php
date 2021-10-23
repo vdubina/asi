@@ -13,7 +13,7 @@
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
-            <table class="table table-striped compact">
+            <table class="table table-bordered table-striped">
                 <tbody>
                     <tr>
                         <th>
@@ -97,5 +97,7 @@
         </div>
     </div>
 </div>
+
+
 
 @endsection
