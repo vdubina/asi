@@ -676,11 +676,27 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 167,
-                'title' => 'profile_password_edit',
+                'title' => 'structure_create',
             ],
             [
-                'id'    => 100001,
-                'title' => 'dev_documentation_access',
+                'id'    => 168,
+                'title' => 'structure_edit',
+            ],
+            [
+                'id'    => 169,
+                'title' => 'structure_show',
+            ],
+            [
+                'id'    => 170,
+                'title' => 'structure_delete',
+            ],
+            [
+                'id'    => 171,
+                'title' => 'structure_access',
+            ],
+            [
+                'id'    => 172,
+                'title' => 'profile_password_edit',
             ],
         ];
 

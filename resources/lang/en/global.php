@@ -311,5 +311,4 @@ return [
     'team-members'                   => 'Team members',
     'calendar'                       => 'Calendar',
     'messenger'                      => 'Messenger',
-    'apidocumentation'              => 'Api Documentation',
 ];

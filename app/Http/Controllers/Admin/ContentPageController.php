@@ -10,7 +10,6 @@ use App\Http\Requests\UpdateContentPageRequest;
 use App\Models\ContentCategory;
 use App\Models\ContentPage;
 use App\Models\ContentTag;
-use App\Models\Slider;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -41,9 +40,7 @@ class ContentPageController extends Controller
 
         $tags = ContentTag::pluck('name', 'id');
 
-        $sliders = Slider::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.contentPages.create', compact('categories', 'tags','sliders'));
+        return view('admin.contentPages.create', compact('categories', 'tags'));
     }
 
     public function store(StoreContentPageRequest $request)
@@ -70,11 +67,9 @@ class ContentPageController extends Controller
 
         $tags = ContentTag::pluck('name', 'id');
 
-        $sliders = Slider::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $contentPage->load('categories', 'tags');
 
-        return view('admin.contentPages.edit', compact('categories', 'tags', 'contentPage', 'sliders'));
+        return view('admin.contentPages.edit', compact('categories', 'tags', 'contentPage'));
     }
 
     public function update(UpdateContentPageRequest $request, ContentPage $contentPage)
@@ -100,7 +95,7 @@ class ContentPageController extends Controller
     {
         abort_if(Gate::denies('content_page_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contentPage->load('categories', 'tags', 'showOnPagesSliders');
+        $contentPage->load('categories', 'tags');
 
         return view('admin.contentPages.show', compact('contentPage'));
     }
