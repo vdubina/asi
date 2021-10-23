@@ -15,6 +15,10 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
+    // Structure
+    Route::delete('structures/destroy', 'StructureController@massDestroy')->name('structures.massDestroy');
+    Route::resource('structures', 'StructureController');
+
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -136,6 +140,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('taxonomy-web-categories/ckmedia', 'TaxonomyWebCategoryController@storeCKEditorImages')->name('taxonomy-web-categories.storeCKEditorImages');
     Route::resource('taxonomy-web-categories', 'TaxonomyWebCategoryController');
 
+    // Taxonomy Tag
+    Route::delete('taxonomy-tags/destroy', 'TaxonomyTagController@massDestroy')->name('taxonomy-tags.massDestroy');
+    Route::resource('taxonomy-tags', 'TaxonomyTagController');
+
+
     // Testimonial Type
     Route::delete('testimonial-types/destroy', 'TestimonialTypeController@massDestroy')->name('testimonial-types.massDestroy');
     Route::post('testimonial-types/media', 'TestimonialTypeController@storeMedia')->name('testimonial-types.storeMedia');
@@ -181,10 +190,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Content Category
     Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
     Route::resource('content-categories', 'ContentCategoryController');
-
-    // Content Tag
-    Route::delete('content-tags/destroy', 'ContentTagController@massDestroy')->name('content-tags.massDestroy');
-    Route::resource('content-tags', 'ContentTagController');
 
     // Content Page
     Route::delete('content-pages/destroy', 'ContentPageController@massDestroy')->name('content-pages.massDestroy');

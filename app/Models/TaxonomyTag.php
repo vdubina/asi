@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ContentTag extends Model
+class TaxonomyTag extends Model
 {
     use SoftDeletes;
     use HasFactory;
 
-    public $table = 'content_tags';
+    public $table = 'taxonomy_tags';
 
     protected $dates = [
         'created_at',
@@ -22,7 +22,6 @@ class ContentTag extends Model
 
     protected $fillable = [
         'name',
-        'slug',
         'created_at',
         'updated_at',
         'deleted_at',

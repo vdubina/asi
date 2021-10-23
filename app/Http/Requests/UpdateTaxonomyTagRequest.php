@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests;
 
-use App\Models\ContentTag;
+use App\Models\TaxonomyTag;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class UpdateContentTagRequest extends FormRequest
+class UpdateTaxonomyTagRequest extends FormRequest
 {
     public function authorize()
     {
@@ -20,10 +20,6 @@ class UpdateContentTagRequest extends FormRequest
             'name' => [
                 'string',
                 'required',
-            ],
-            'slug' => [
-                'string',
-                'nullable',
             ],
         ];
     }

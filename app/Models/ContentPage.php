@@ -52,7 +52,7 @@ class ContentPage extends Model implements HasMedia
 
     public function tags()
     {
-        return $this->belongsToMany(ContentTag::class);
+        return $this->belongsToMany(TaxonomyTag::class);
     }
 
     public function slider()

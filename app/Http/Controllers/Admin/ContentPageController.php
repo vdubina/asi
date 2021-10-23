@@ -9,7 +9,7 @@ use App\Http\Requests\StoreContentPageRequest;
 use App\Http\Requests\UpdateContentPageRequest;
 use App\Models\ContentCategory;
 use App\Models\ContentPage;
-use App\Models\ContentTag;
+use App\Models\TaxonomyTag;
 use App\Models\Slider;
 use Gate;
 use Illuminate\Http\Request;
@@ -28,9 +28,9 @@ class ContentPageController extends Controller
 
         $content_categories = ContentCategory::get();
 
-        $content_tags = ContentTag::get();
+        $taxonomy_tags = TaxonomyTag::get();
 
-        return view('admin.contentPages.index', compact('contentPages', 'content_categories', 'content_tags'));
+        return view('admin.contentPages.index', compact('contentPages', 'content_categories', 'taxonomy_tags'));
     }
 
     public function create()
@@ -39,7 +39,7 @@ class ContentPageController extends Controller
 
         $categories = ContentCategory::pluck('name', 'id');
 
-        $tags = ContentTag::pluck('name', 'id');
+        $tags = TaxonomyTag::pluck('name', 'id');
 
         $sliders = Slider::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -68,7 +68,7 @@ class ContentPageController extends Controller
 
         $categories = ContentCategory::pluck('name', 'id');
 
-        $tags = ContentTag::pluck('name', 'id');
+        $tags = TaxonomyTag::pluck('name', 'id');
 
         $sliders = Slider::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

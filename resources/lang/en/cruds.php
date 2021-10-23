@@ -1,6 +1,31 @@
 <?php
 
 return [
+    'structure' => [
+        'title'          => 'Structure',
+        'title_singular' => 'Structure',
+        'title_node' => 'Structure Node',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'label'             => 'Label',
+            'label_helper'      => ' ',
+            'type'              => 'Type',
+            'type_helper'       => ' ',
+            'link'              => 'Link',
+            'link_helper'       => ' ',
+            'external'          => 'New tab',
+            'external_helper'   => ' ',
+            'page'              => 'Page',
+            'page_helper'       => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
+        ],
+    ],
     'userManagement' => [
         'title'          => 'User management',
         'title_singular' => 'User management',
@@ -487,6 +512,24 @@ return [
             'deleted_at_helper'          => ' ',
         ],
     ],
+    'taxonomyTag' => [
+        'title'          => 'Tags',
+        'title_singular' => 'Tag',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'name'              => 'Name',
+            'name_helper'       => ' ',
+            'slug'              => 'Slug',
+            'slug_helper'       => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated At',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted At',
+            'deleted_at_helper' => ' ',
+        ],
+    ],
     'testimonialManagement' => [
         'title'          => 'Testimonials',
         'title_singular' => 'Testimonial',
@@ -735,24 +778,6 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'contentTag' => [
-        'title'          => 'Tags',
-        'title_singular' => 'Tag',
-        'fields'         => [
-            'id'                => 'ID',
-            'id_helper'         => ' ',
-            'name'              => 'Name',
-            'name_helper'       => ' ',
-            'slug'              => 'Slug',
-            'slug_helper'       => ' ',
-            'created_at'        => 'Created at',
-            'created_at_helper' => ' ',
-            'updated_at'        => 'Updated At',
-            'updated_at_helper' => ' ',
-            'deleted_at'        => 'Deleted At',
-            'deleted_at_helper' => ' ',
-        ],
-    ],
     'contentPage' => [
         'title'          => 'Pages',
         'title_singular' => 'Page',
@@ -788,8 +813,8 @@ return [
         'title_singular' => 'Course',
     ],
     'sliderManagement' => [
-        'title'          => 'Sliders',
-        'title_singular' => 'Slider',
+        'title'          => 'Media',
+        'title_singular' => 'Media',
     ],
     'taxonomyManagement' => [
         'title'          => 'Taxonomy',

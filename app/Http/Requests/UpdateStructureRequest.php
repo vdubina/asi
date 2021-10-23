@@ -2,26 +2,31 @@
 
 namespace App\Http\Requests;
 
-use App\Models\ContentTag;
+use App\Models\Structure;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class StoreContentTagRequest extends FormRequest
+class UpdateStructureRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('content_tag_create');
+        return Gate::allows('structure_edit');
     }
 
     public function rules()
     {
         return [
-            'name' => [
+            'label' => [
                 'string',
+                'min:2',
+                'max:60',
                 'required',
             ],
-            'slug' => [
+            'type' => [
+                'required',
+            ],
+            'link' => [
                 'string',
                 'nullable',
             ],

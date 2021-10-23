@@ -3,13 +3,13 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.contentTag.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.taxonomyTag.title') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.content-tags.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.taxonomy-tags.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -17,32 +17,32 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.contentTag.fields.id') }}
+                            {{ trans('cruds.taxonomyTag.fields.id') }}
                         </th>
                         <td>
-                            {{ $contentTag->id }}
+                            {{ $taxonomyTag->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.contentTag.fields.name') }}
+                            {{ trans('cruds.taxonomyTag.fields.name') }}
                         </th>
                         <td>
-                            {{ $contentTag->name }}
+                            {{ $taxonomyTag->name }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.contentTag.fields.slug') }}
+                            {{ trans('cruds.taxonomyTag.fields.slug') }}
                         </th>
                         <td>
-                            {{ $contentTag->slug }}
+                            {{ $taxonomyTag->slug }}
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.content-tags.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.taxonomy-tags.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>

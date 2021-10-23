@@ -1,29 +1,35 @@
 @extends('layouts.admin')
 @section('content')
-@can('content_tag_create')
+@can('structure_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.content-tags.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.contentTag.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.structures.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.structure.title_node') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.contentTag.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.structure.title_singular') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact table-hover datatable datatable-ContentTag">
+            <table class=" table table-striped compact table-hover datatable datatable-Structure">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.contentTag.fields.name') }}
+                            {{ trans('cruds.structure.fields.id') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.structure.fields.label') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.structure.fields.type') }}
                         </th>
                         <th>
                             &nbsp;
@@ -31,29 +37,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($contentTags as $key => $contentTag)
-                        <tr data-entry-id="{{ $contentTag->id }}">
+                    @foreach($structures as $key => $structure)
+                        <tr data-entry-id="{{ $structure->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $contentTag->name ?? '' }}
+                                {{ $structure->id ?? '' }}
                             </td>
                             <td>
-                                @can('content_tag_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.content-tags.show', $contentTag->id) }}">
+                                {{ $structure->label ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\Structure::TYPE_SELECT[$structure->type] ?? '' }}
+                            </td>
+                            <td>
+                                @can('structure_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.structures.show', $structure->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('content_tag_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.content-tags.edit', $contentTag->id) }}">
+                                @can('structure_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.structures.edit', $structure->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('content_tag_delete')
-                                    <form action="{{ route('admin.content-tags.destroy', $contentTag->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('structure_delete')
+                                    <form action="{{ route('admin.structures.destroy', $structure->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -78,11 +90,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('content_tag_delete')
+@can('structure_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.content-tags.massDestroy') }}",
+    url: "{{ route('admin.structures.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -110,10 +122,10 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 2, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-ContentTag:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-Structure:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

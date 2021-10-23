@@ -624,23 +624,23 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 154,
-                'title' => 'content_tag_create',
+                'title' => 'taxonomy_tag_create',
             ],
             [
                 'id'    => 155,
-                'title' => 'content_tag_edit',
+                'title' => 'taxonomy_tag_edit',
             ],
             [
                 'id'    => 156,
-                'title' => 'content_tag_show',
+                'title' => 'taxonomy_tag_show',
             ],
             [
                 'id'    => 157,
-                'title' => 'content_tag_delete',
+                'title' => 'taxonomy_tag_delete',
             ],
             [
                 'id'    => 158,
-                'title' => 'content_tag_access',
+                'title' => 'taxonomy_tag_access',
             ],
             [
                 'id'    => 159,
@@ -677,6 +677,26 @@ class PermissionsTableSeeder extends Seeder
             [
                 'id'    => 167,
                 'title' => 'profile_password_edit',
+            ],
+            [
+                'id'    => 168,
+                'title' => 'structure_create',
+            ],
+            [
+                'id'    => 169,
+                'title' => 'structure_edit',
+            ],
+            [
+                'id'    => 170,
+                'title' => 'structure_show',
+            ],
+            [
+                'id'    => 171,
+                'title' => 'structure_delete',
+            ],
+            [
+                'id'    => 172,
+                'title' => 'structure_access',
             ],
             [
                 'id'    => 100001,
