@@ -624,23 +624,23 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 154,
-                'title' => 'taxonomy_tag_create',
+                'title' => 'content_tag_create',
             ],
             [
                 'id'    => 155,
-                'title' => 'taxonomy_tag_edit',
+                'title' => 'content_tag_edit',
             ],
             [
                 'id'    => 156,
-                'title' => 'taxonomy_tag_show',
+                'title' => 'content_tag_show',
             ],
             [
                 'id'    => 157,
-                'title' => 'taxonomy_tag_delete',
+                'title' => 'content_tag_delete',
             ],
             [
                 'id'    => 158,
-                'title' => 'taxonomy_tag_access',
+                'title' => 'content_tag_access',
             ],
             [
                 'id'    => 159,
@@ -676,31 +676,67 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 167,
-                'title' => 'profile_password_edit',
-            ],
-            [
-                'id'    => 168,
                 'title' => 'structure_create',
             ],
             [
-                'id'    => 169,
+                'id'    => 168,
                 'title' => 'structure_edit',
             ],
             [
-                'id'    => 170,
+                'id'    => 169,
                 'title' => 'structure_show',
             ],
             [
-                'id'    => 171,
+                'id'    => 170,
                 'title' => 'structure_delete',
             ],
             [
-                'id'    => 172,
+                'id'    => 171,
                 'title' => 'structure_access',
             ],
             [
-                'id'    => 100001,
-                'title' => 'dev_documentation_access',
+                'id'    => 172,
+                'title' => 'content_block_create',
+            ],
+            [
+                'id'    => 173,
+                'title' => 'content_block_edit',
+            ],
+            [
+                'id'    => 174,
+                'title' => 'content_block_show',
+            ],
+            [
+                'id'    => 175,
+                'title' => 'content_block_delete',
+            ],
+            [
+                'id'    => 176,
+                'title' => 'content_block_access',
+            ],
+            [
+                'id'    => 177,
+                'title' => 'taxonomy_content_block_type_create',
+            ],
+            [
+                'id'    => 178,
+                'title' => 'taxonomy_content_block_type_edit',
+            ],
+            [
+                'id'    => 179,
+                'title' => 'taxonomy_content_block_type_show',
+            ],
+            [
+                'id'    => 180,
+                'title' => 'taxonomy_content_block_type_delete',
+            ],
+            [
+                'id'    => 181,
+                'title' => 'taxonomy_content_block_type_access',
+            ],
+            [
+                'id'    => 182,
+                'title' => 'profile_password_edit',
             ],
         ];
 

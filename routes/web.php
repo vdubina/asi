@@ -14,11 +14,6 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
     Route::get('/', 'HomeController@index')->name('home');
-
-    // Structure
-    Route::delete('structures/destroy', 'StructureController@massDestroy')->name('structures.massDestroy');
-    Route::resource('structures', 'StructureController');
-
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -140,11 +135,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('taxonomy-web-categories/ckmedia', 'TaxonomyWebCategoryController@storeCKEditorImages')->name('taxonomy-web-categories.storeCKEditorImages');
     Route::resource('taxonomy-web-categories', 'TaxonomyWebCategoryController');
 
-    // Taxonomy Tag
-    Route::delete('taxonomy-tags/destroy', 'TaxonomyTagController@massDestroy')->name('taxonomy-tags.massDestroy');
-    Route::resource('taxonomy-tags', 'TaxonomyTagController');
-
-
     // Testimonial Type
     Route::delete('testimonial-types/destroy', 'TestimonialTypeController@massDestroy')->name('testimonial-types.massDestroy');
     Route::post('testimonial-types/media', 'TestimonialTypeController@storeMedia')->name('testimonial-types.storeMedia');
@@ -191,11 +181,29 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
     Route::resource('content-categories', 'ContentCategoryController');
 
+    // Content Tag
+    Route::delete('content-tags/destroy', 'ContentTagController@massDestroy')->name('content-tags.massDestroy');
+    Route::resource('content-tags', 'ContentTagController');
+
     // Content Page
     Route::delete('content-pages/destroy', 'ContentPageController@massDestroy')->name('content-pages.massDestroy');
     Route::post('content-pages/media', 'ContentPageController@storeMedia')->name('content-pages.storeMedia');
     Route::post('content-pages/ckmedia', 'ContentPageController@storeCKEditorImages')->name('content-pages.storeCKEditorImages');
     Route::resource('content-pages', 'ContentPageController');
+
+    // Structure
+    Route::delete('structures/destroy', 'StructureController@massDestroy')->name('structures.massDestroy');
+    Route::resource('structures', 'StructureController');
+
+    // Content Block
+    Route::delete('content-blocks/destroy', 'ContentBlockController@massDestroy')->name('content-blocks.massDestroy');
+    Route::post('content-blocks/media', 'ContentBlockController@storeMedia')->name('content-blocks.storeMedia');
+    Route::post('content-blocks/ckmedia', 'ContentBlockController@storeCKEditorImages')->name('content-blocks.storeCKEditorImages');
+    Route::resource('content-blocks', 'ContentBlockController');
+
+    // Taxonomy Content Block Type
+    Route::delete('taxonomy-content-block-types/destroy', 'TaxonomyContentBlockTypeController@massDestroy')->name('taxonomy-content-block-types.massDestroy');
+    Route::resource('taxonomy-content-block-types', 'TaxonomyContentBlockTypeController');
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
@@ -207,8 +215,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('messenger/{topic}', 'MessengerController@destroyTopic')->name('messenger.destroyTopic');
     Route::post('messenger/{topic}/reply', 'MessengerController@replyToTopic')->name('messenger.reply');
     Route::get('messenger/{topic}/reply', 'MessengerController@showReply')->name('messenger.showReply');
-
-    Route::get('/documentation', 'DevController@index')->name('documentation');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

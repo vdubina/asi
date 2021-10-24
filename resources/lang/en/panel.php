@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'Backend Manager',
+    'site_title' => 'American Seminar Institute',
 ];
