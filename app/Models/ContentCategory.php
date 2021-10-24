@@ -28,6 +28,10 @@ class ContentCategory extends Model
         'deleted_at',
     ];
 
+    public function showOnPagesSliders()
+    {
+        return $this->belongsToMany(Slider::class);
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

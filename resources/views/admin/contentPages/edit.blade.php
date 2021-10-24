@@ -50,18 +50,6 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.tag_helper') }}</span>
             </div>
-        <div class="form-group">
-            <label for="slider_id">{{ trans('cruds.contentPage.fields.slider') }}</label>
-            <select class="form-control select2 {{ $errors->has('slider') ? 'is-invalid' : '' }}" name="slider_id" id="slider_id">
-                @foreach($sliders as $id => $entry)
-                <option value="{{ $id }}" {{ (old('slider_id') ? old('slider_id') : $contentPage->slider->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                @endforeach
-            </select>
-            @if($errors->has('slider'))
-            <span class="text-danger">{{ $errors->first('slider') }}</span>
-            @endif
-            <span class="help-block">{{ trans('cruds.contentPage.fields.slider_helper') }}</span>
-        </div>
             <div class="form-group">
                 <label for="page_text">{{ trans('cruds.contentPage.fields.page_text') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text', $contentPage->page_text) !!}</textarea>

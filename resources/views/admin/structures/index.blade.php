@@ -4,19 +4,19 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route('admin.structures.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.structure.title_node') }}
+                {{ trans('global.add') }} {{ trans('cruds.structure.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.structure.title_singular') }}
+        {{ trans('cruds.structure.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact table-hover datatable datatable-Structure">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Structure">
                 <thead>
                     <tr>
                         <th width="10">
@@ -130,7 +130,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
+  
 })
 
 </script>
