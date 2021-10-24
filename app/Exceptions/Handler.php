@@ -43,7 +43,6 @@ class Handler extends ExceptionHandler
                     'message' => 'Resource not found.'
                 ], 404);
             }
-            return $e;
         });
 
     }

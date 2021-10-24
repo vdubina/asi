@@ -17,7 +17,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <label for="categories">{{ trans('cruds.contentPage.fields.category') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>

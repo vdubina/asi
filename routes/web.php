@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
@@ -35,14 +37,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
     Route::get('user-alerts/read', 'UserAlertsController@read');
     Route::resource('user-alerts', 'UserAlertsController', ['except' => ['edit', 'update']]);
-
-    // Faq Category
-    Route::delete('faq-categories/destroy', 'FaqCategoryController@massDestroy')->name('faq-categories.massDestroy');
-    Route::resource('faq-categories', 'FaqCategoryController');
-
-    // Faq Question
-    Route::delete('faq-questions/destroy', 'FaqQuestionController@massDestroy')->name('faq-questions.massDestroy');
-    Route::resource('faq-questions', 'FaqQuestionController');
 
     // Taxonomy Course
     Route::delete('taxonomy-courses/destroy', 'TaxonomyCourseController@massDestroy')->name('taxonomy-courses.massDestroy');
@@ -144,18 +138,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('taxonomy-tags/destroy', 'TaxonomyTagController@massDestroy')->name('taxonomy-tags.massDestroy');
     Route::resource('taxonomy-tags', 'TaxonomyTagController');
 
-
-    // Testimonial Type
-    Route::delete('testimonial-types/destroy', 'TestimonialTypeController@massDestroy')->name('testimonial-types.massDestroy');
-    Route::post('testimonial-types/media', 'TestimonialTypeController@storeMedia')->name('testimonial-types.storeMedia');
-    Route::post('testimonial-types/ckmedia', 'TestimonialTypeController@storeCKEditorImages')->name('testimonial-types.storeCKEditorImages');
-    Route::resource('testimonial-types', 'TestimonialTypeController');
-
-    // Testimonial
-    Route::delete('testimonials/destroy', 'TestimonialController@massDestroy')->name('testimonials.massDestroy');
-    Route::post('testimonials/media', 'TestimonialController@storeMedia')->name('testimonials.storeMedia');
-    Route::post('testimonials/ckmedia', 'TestimonialController@storeCKEditorImages')->name('testimonials.storeCKEditorImages');
-    Route::resource('testimonials', 'TestimonialController');
+    // Taxonomy Content Block Type
+    Route::delete('taxonomy-content-block-types/destroy', 'TaxonomyContentBlockTypeController@massDestroy')->name('taxonomy-content-block-types.massDestroy');
+    Route::resource('taxonomy-content-block-types', 'TaxonomyContentBlockTypeController');
 
     // Slider
     Route::delete('sliders/destroy', 'SliderController@massDestroy')->name('sliders.massDestroy');
@@ -197,6 +182,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('content-pages/ckmedia', 'ContentPageController@storeCKEditorImages')->name('content-pages.storeCKEditorImages');
     Route::resource('content-pages', 'ContentPageController');
 
+    // Content Block
+    Route::get('content-blocks/{content_block_type}','ContentBlockController@index')->name('content-blocks.index');
+    Route::post('content-blocks/{content_block_type}','ContentBlockController@store')->name('content-blocks.store');
+    Route::get('content-blocks/{content_block_type}/create','ContentBlockController@create')->name('content-blocks.create');
+    Route::get('content-blocks/{content_block_type}/{content_block}/show','ContentBlockController@show')->name('content-blocks.show');
+    Route::get('content-blocks/{content_block_type}/{content_block}/edit','ContentBlockController@edit')->name('content-blocks.edit');
+    Route::put('content-blocks/{content_block_type}/{content_block}','ContentBlockController@update')->name('content-blocks.update');
+    Route::delete('content-blocks/{content_block_type}/{content_block}','ContentBlockController@destroy')->name('content-blocks.destroy');
+    Route::delete('content-blocks/destroy', 'ContentBlockController@massDestroy')->name('content-blocks.massDestroy');
+    Route::post('content-blocks/media', 'ContentBlockController@storeMedia')->name('content-blocks.storeMedia');
+    Route::post('content-blocks/ckmedia', 'ContentBlockController@storeCKEditorImages')->name('content-blocks.storeCKEditorImages');
+
+    // System Calendar
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
     Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');

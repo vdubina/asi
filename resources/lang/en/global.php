@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'item'                           => 'Item',
     'actions'                        => 'Actions',
     'add'                            => 'Add',
     'allRightsReserved'              => 'All rights reserved.',
@@ -199,7 +200,6 @@ return [
     'end_time'                       => 'End time',
     'entry_date'                     => 'Entry date',
     'excerpt'                        => 'Excerpt',
-    'faq_management'                 => 'FAQ Management',
     'featured_image'                 => 'Featured image',
     'fee_percent'                    => 'Fee percent',
     'file'                           => 'File',
