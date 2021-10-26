@@ -77,9 +77,7 @@
                 <span class="help-block">{{ trans('cruds.taxonomyCourse.fields.field_additional_information_helper') }}</span>
             </div>
             <div class="form-group">
-                <button class="btn btn100 btn-danger" type="submit">
-                    {{ trans('global.save') }}
-                </button>
+                @include('partials.buttons.save')
             </div>
         </form>
     </div>

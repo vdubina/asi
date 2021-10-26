@@ -2,9 +2,7 @@
     @can('user_alert_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
-                <a class="btn btn100 btn-success" href="{{ route('admin.user-alerts.create') }}">
-                    {{ trans('global.add_new') }}
-                </a>
+                @include('partials.buttons.add', ['url'=>route('admin.user-alerts.create')])
             </div>
         </div>
     @endcan

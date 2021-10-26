@@ -78,6 +78,7 @@ body {
     line-height:1!important;
     padding-left:7px!important;
     padding-right:7px!important;
+    opacity:0.8;
 }
 
 .card-header {

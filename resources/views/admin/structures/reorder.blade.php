@@ -2,12 +2,8 @@
 @section('content')
 <div style="margin-bottom: 10px;" class="row">
     <div class="col-lg-12">
-        <a class="btn btn100 btn-success" href="javascript://" onclick="$('#toArray').click();">
-            {{ trans('global.save') }}
-        </a>
-        <a class="btn btn100 btn-info" href="{{ route('admin.structures.index') }}">
-            {{ trans('global.back_to_list') }}
-        </a>
+        @include('partials.buttons.save', ['click'=>'$("#toArray").click();'])
+        @include('partials.buttons.back', ['url'=>route('admin.structures.index')])
     </div>
 </div>
 <div class="card">
@@ -24,12 +20,8 @@
             @endforeach
         </ol>
 
-        <a id="toArray" class="btn btn100 btn-success" href="javascript://">
-            {{ trans('global.save') }}
-        </a>
-        <a class="btn btn100 btn-info" href="{{ route('admin.structures.index') }}">
-            {{ trans('global.back_to_list') }}
-        </a>
+        @include('partials.buttons.save', ['id'=>'toArray'])
+        @include('partials.buttons.back', ['url'=>route('admin.structures.index')])
     </div>
 </div>
 

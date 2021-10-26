@@ -3,9 +3,7 @@
 @can('role_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn100 btn-success" href="{{ route('admin.roles.create') }}">
-                {{ trans('global.add_new') }}
-            </a>
+            @include('partials.buttons.add', ['url'=>route('admin.roles.create')])
         </div>
     </div>
 @endcan

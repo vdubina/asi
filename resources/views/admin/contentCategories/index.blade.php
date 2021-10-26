@@ -3,9 +3,7 @@
 @can('content_category_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn100 btn-success" href="{{ route('admin.content-categories.create') }}">
-                {{ trans('global.add_new') }}
-            </a>
+            @include('partials.buttons.add', ['url'=>route('admin.content-categories.create')])
         </div>
     </div>
 @endcan

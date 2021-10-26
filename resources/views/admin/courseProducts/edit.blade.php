@@ -217,9 +217,7 @@
                 <span class="help-block">{{ trans('cruds.courseProduct.fields.field_topics_nodes_helper') }}</span>
             </div>
             <div class="form-group">
-                <button class="btn btn100 btn-danger" type="submit">
-                    {{ trans('global.save') }}
-                </button>
+                @include('partials.buttons.save')
             </div>
         </form>
     </div>
