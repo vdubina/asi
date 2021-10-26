@@ -45,7 +45,7 @@
                     </td>
                     <td>
                         @foreach($structure->ancestors as $a)
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="fas fa-fw fa-caret-right"></i>
                         @endforeach
                         {{ $structure->label ?? '' }}
                     </td>
