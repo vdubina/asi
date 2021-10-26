@@ -85,6 +85,7 @@ body {
 .card-header {
     font-size:1.2rem!important;
     color:#007bff!important;
+    opacity:0.8;
 }
 
 .pagination a, .pagination a:hover {
@@ -291,4 +292,9 @@ li.mjs-nestedSortable-collapsed.mjs-nestedSortable-hovering div {
 
 .btn100 {
     min-width: 100px;
+}
+
+.btn-info {
+    background-color:#28a745!important;
+    border-color:#28a745!important;
 }
