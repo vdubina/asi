@@ -40,9 +40,9 @@
 
                     </td>
                     <td>
-                        <i class="fas fa-fw fa-caret-right"></i>
+                        <i class="fas fa-fw fa-caret-right text-blue"></i>
                         @foreach($structure->ancestors as $a)
-                        <i class="fas fa-fw fa-caret-right"></i>
+                        <i class="fas fa-fw fa-caret-right text-blue"></i>
                         @endforeach
                         {{ $structure->label ?? '' }}
                     </td>
