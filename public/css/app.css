@@ -90,6 +90,13 @@ body {
     line-height:0.8em!important;
 }
 
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff!important;
+    background-color: #007bff;
+    border-color:#007bff
+}
+
 
 .buttons-colvis, .buttons-copy {
     display:none!important;
