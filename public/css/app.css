@@ -79,6 +79,7 @@ body {
     padding-left:7px!important;
     padding-right:7px!important;
     opacity:0.8;
+    border-radius:3px!important;
 }
 
 .card-header {
@@ -129,10 +130,11 @@ td select option {
 }
 .dt-buttons a, .dt-buttons select, .datatable .btn {
     font-size:0.8rem!important;
-    line-height:0.8rem!important;
     padding: 4px!important;
+    padding-left:6px!important;
+    padding-right:6px!important;
     height:auto!important;
-    border-radius: 3px!important;
+
 }
 
 .datatable th:last-child{ width: 120px; }
