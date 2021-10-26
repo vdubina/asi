@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Structure
     Route::delete('structures/destroy', 'StructureController@massDestroy')->name('structures.massDestroy');
     Route::resource('structures', 'StructureController');
+    Route::get('structures/reorder/list','StructureController@reorder')->name('structures.reorder');
+    Route::post('structures/reorder/store','StructureController@reorderStore')->name('structures.reorderStore');
 
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');

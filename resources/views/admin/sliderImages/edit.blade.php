@@ -60,7 +60,7 @@
                 <span class="help-block">{{ trans('cruds.sliderImage.fields.field_weight_helper') }}</span>
             </div>
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn100 btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

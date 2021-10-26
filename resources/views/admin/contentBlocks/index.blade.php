@@ -3,8 +3,8 @@
 @can('content_block_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.content-blocks.create', $contentBlockType->id) }}">
-                {{ trans('global.add') }} {{ trans('cruds.contentBlock.title_singular') }}
+            <a class="btn btn100 btn-success" href="{{ route('admin.content-blocks.create', $contentBlockType->id) }}">
+                {{ trans('global.add_new') }}
             </a>
         </div>
     </div>

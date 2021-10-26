@@ -37,7 +37,7 @@
                 <span class="help-block">{{ trans('cruds.slider.fields.field_is_subsite_content_helper') }}</span>
             </div>
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn100 btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

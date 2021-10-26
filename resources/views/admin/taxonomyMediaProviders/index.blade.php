@@ -3,8 +3,8 @@
 @can('taxonomy_media_provider_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.taxonomy-media-providers.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.taxonomyMediaProvider.title_singular') }}
+            <a class="btn btn100 btn-success" href="{{ route('admin.taxonomy-media-providers.create') }}">
+                {{ trans('global.add_new') }}
             </a>
         </div>
     </div>

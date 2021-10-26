@@ -28,6 +28,7 @@ class UpdateStructureRequest extends FormRequest
             ],
             'link' => [
                 'string',
+                'url',
                 'nullable',
             ],
         ];

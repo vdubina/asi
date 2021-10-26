@@ -39,7 +39,7 @@
                             </div>
                             <div class="col-6 text-right">
                                 <a class="btn btn-secondary px-4" href="{{ route('twoFactor.resend') }}">{{ __('global.two_factor.resend') }}</a>
-                                <a class="btn btn-danger px-4" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                                <a class="btn btn100 btn-danger px-4" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                                     {{ trans('global.logout') }}
                                 </a>
                             </div>

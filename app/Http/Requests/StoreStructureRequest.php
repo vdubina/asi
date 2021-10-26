@@ -28,6 +28,7 @@ class StoreStructureRequest extends FormRequest
             ],
             'link' => [
                 'string',
+                'url',
                 'nullable',
             ],
         ];

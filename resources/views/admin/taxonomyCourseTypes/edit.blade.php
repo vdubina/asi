@@ -57,7 +57,7 @@
                 <span class="help-block">{{ trans('cruds.taxonomyCourseType.fields.field_custom_course_layout_helper') }}</span>
             </div>
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn100 btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

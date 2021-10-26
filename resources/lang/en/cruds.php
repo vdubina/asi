@@ -4,7 +4,7 @@ return [
     'structure' => [
         'title'          => 'Structure',
         'title_singular' => 'Structure',
-        'title_node' => 'Structure Node',
+        'title_node' => 'Menu Item',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
