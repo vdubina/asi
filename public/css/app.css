@@ -138,7 +138,7 @@ td select option {
 
 }
 
-.datatable th:last-child{ width: 120px; }
+.datatable th:last-child{ width: 150px; }
 
 .brand-text {
     font-size:0.8rem!important;
@@ -198,7 +198,7 @@ ol.sortable {
     cursor: move;
     background-color: #f4f4f4;
     color: #444;
-    border-color: #00acd6;
+    border-color: #c6c6c6;
 }
 
 .sortable li.mjs-nestedSortable-branch div {
@@ -292,6 +292,10 @@ li.mjs-nestedSortable-collapsed.mjs-nestedSortable-hovering div {
 
 .btn100 {
     min-width: 100px;
+}
+
+.btn-xs {
+    min-width: 50px;
 }
 
 .btn-info {

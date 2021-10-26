@@ -40,6 +40,7 @@
 
                     </td>
                     <td>
+                        <i class="fas fa-fw fa-caret-right"></i>
                         @foreach($structure->ancestors as $a)
                         <i class="fas fa-fw fa-caret-right"></i>
                         @endforeach
