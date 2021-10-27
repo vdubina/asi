@@ -12,6 +12,7 @@
             @csrf
             <div class="form-group">
                 @include('partials.buttons.save')
+                @include('partials.buttons.back', ['url'=>route('admin.user-alerts.index')])
             </div>
         </form>
     </div>

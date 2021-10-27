@@ -13,7 +13,7 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class=" table table-striped compact table-hover datatable datatable-fieldCourseProductsCourseInstructors">
+                <table class=" {{ config('panel.datatables.css') }} datatable-fieldCourseProductsCourseInstructors">
                     <thead>
                         <tr>
                             <th width="10">

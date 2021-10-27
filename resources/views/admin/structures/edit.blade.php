@@ -63,6 +63,7 @@
             </div>
             <div class="form-group">
                 @include('partials.buttons.save')
+                @include('partials.buttons.back', ['url'=>route('admin.structures.index')])
             </div>
         </form>
     </div>

@@ -36,6 +36,7 @@
             </div>
             <div class="form-group">
                 @include('partials.buttons.save')
+                @include('partials.buttons.back', ['url'=>route('admin.roles.index')])
             </div>
         </form>
     </div>

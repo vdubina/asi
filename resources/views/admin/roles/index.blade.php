@@ -14,7 +14,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact table-hover datatable datatable-Role">
+            <table class=" {{ config('panel.datatables.css') }} datatable-Role">
                 <thead>
                     <tr>
                         <th width="10">

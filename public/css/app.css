@@ -302,3 +302,11 @@ li.mjs-nestedSortable-collapsed.mjs-nestedSortable-hovering div {
     background-color:#28a745!important;
     border-color:#28a745!important;
 }
+
+.main-footer {
+    padding:5px!important;
+}
+
+.main-footer * {
+    color:#4b545c!important;
+}

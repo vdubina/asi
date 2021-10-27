@@ -14,7 +14,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact table-hover datatable datatable-TaxonomyAddressType">
+            <table class=" {{ config('panel.datatables.css') }} datatable-TaxonomyAddressType">
                 <thead>
                     <tr>
                         <th width="10">

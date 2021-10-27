@@ -28,6 +28,7 @@
             </div>
             <div class="form-group">
                 @include('partials.buttons.save')
+                @include('partials.buttons.back', ['url'=>route('admin.taxonomy-content-block-types.index')])
             </div>
         </form>
     </div>

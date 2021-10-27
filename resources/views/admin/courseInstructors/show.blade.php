@@ -9,9 +9,7 @@
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.course-instructors.index') }}">
-                    {{ trans('global.back_to_list') }}
-                </a>
+                @include('partials.buttons.back', ['url'=>route('admin.course-instructors.index')])
             </div>
             <table class="table table-striped compact">
                 <tbody>
@@ -64,9 +62,7 @@
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.course-instructors.index') }}">
-                    {{ trans('global.back_to_list') }}
-                </a>
+                @include('partials.buttons.back', ['url'=>route('admin.course-instructors.index')])
             </div>
         </div>
     </div>

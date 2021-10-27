@@ -28,6 +28,7 @@
             </div>
             <div class="form-group">
                 @include('partials.buttons.save')
+                @include('partials.buttons.back', ['url'=>route('admin.content-categories.index')])
             </div>
         </form>
     </div>

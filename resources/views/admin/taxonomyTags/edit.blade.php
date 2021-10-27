@@ -20,6 +20,7 @@
             </div>
             <div class="form-group">
                 @include('partials.buttons.save')
+                @include('partials.buttons.back', ['url'=>route('admin.taxonomy-tags.index')])
             </div>
         </form>
     </div>

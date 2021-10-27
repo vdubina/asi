@@ -14,7 +14,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact table-hover datatable datatable-ContentCategory">
+            <table class=" {{ config('panel.datatables.css') }} datatable-ContentCategory">
                 <thead>
                     <tr>
                         <th width="10">

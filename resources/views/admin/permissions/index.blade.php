@@ -14,7 +14,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-striped compact table-hover datatable datatable-Permission">
+            <table class=" {{ config('panel.datatables.css') }} datatable-Permission">
                 <thead>
                     <tr>
                         <th width="10">

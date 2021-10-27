@@ -185,6 +185,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('content-pages', 'ContentPageController');
 
     // Content Block
+    Route::delete('content-blocks/destroy', 'ContentBlockController@massDestroy')->name('content-blocks.massDestroy');
+    Route::post('content-blocks/media', 'ContentBlockController@storeMedia')->name('content-blocks.storeMedia');
+    Route::post('content-blocks/ckmedia', 'ContentBlockController@storeCKEditorImages')->name('content-blocks.storeCKEditorImages');
     Route::get('content-blocks/{content_block_type}','ContentBlockController@index')->name('content-blocks.index');
     Route::post('content-blocks/{content_block_type}','ContentBlockController@store')->name('content-blocks.store');
     Route::get('content-blocks/{content_block_type}/create','ContentBlockController@create')->name('content-blocks.create');
@@ -192,9 +195,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('content-blocks/{content_block_type}/{content_block}/edit','ContentBlockController@edit')->name('content-blocks.edit');
     Route::put('content-blocks/{content_block_type}/{content_block}','ContentBlockController@update')->name('content-blocks.update');
     Route::delete('content-blocks/{content_block_type}/{content_block}','ContentBlockController@destroy')->name('content-blocks.destroy');
-    Route::delete('content-blocks/destroy', 'ContentBlockController@massDestroy')->name('content-blocks.massDestroy');
-    Route::post('content-blocks/media', 'ContentBlockController@storeMedia')->name('content-blocks.storeMedia');
-    Route::post('content-blocks/ckmedia', 'ContentBlockController@storeCKEditorImages')->name('content-blocks.storeCKEditorImages');
+
 
     // System Calendar
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');

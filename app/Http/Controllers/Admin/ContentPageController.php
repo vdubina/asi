@@ -100,7 +100,7 @@ class ContentPageController extends Controller
     {
         abort_if(Gate::denies('content_page_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contentPage->load('categories', 'tags', 'showOnPagesSliders');
+        $contentPage->load('categories', 'tags');
 
         return view('admin.contentPages.show', compact('contentPage'));
     }

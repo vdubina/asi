@@ -8,4 +8,8 @@ return [
         'en' => 'English',
     ],
     'registration_default_role' => '4',
+    'datatables' => [
+        'css' => 'table table-striped compact table-hover datatable'
+    ]
+
 ];

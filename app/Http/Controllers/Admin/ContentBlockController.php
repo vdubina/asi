@@ -52,7 +52,7 @@ class ContentBlockController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $contentBlock->id]);
         }
 
-        return redirect()->route('admin.content-blocks.index', ['type'=>$contentBlockType->id]);
+        return redirect()->route('admin.content-blocks.index', $contentBlockType->id);
     }
 
     public function edit(TaxonomyContentBlockType $contentBlockType, ContentBlock $contentBlock)
