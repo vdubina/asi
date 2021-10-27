@@ -1,11 +1,11 @@
 .nav-link {
-    font-size:0.9rem!important;
+    font-size:0.85rem!important;
     padding-top: 5px!important;
     padding-bottom: 5px!important;
 }
 
 .nav-icon {
-    font-size:0.9rem!important;
+    font-size:0.85rem!important;
 }
 
 .nav-treeview {
@@ -40,7 +40,7 @@
 
 table.dataTable thead th {
     border-bottom:1px;
-    background-color:#4b545c!important;
+    background-color:#495057!important;
     color:#FFFFFF;
     font-weight:normal;
 }
@@ -70,11 +70,12 @@ table.dataTable>thead .sorting_desc:after {
 
 
 body {
-    font-size:0.9rem!important;
+    font-size:0.85rem!important;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 .btn {
-    font-size:0.9rem!important;
+    font-size:0.85rem!important;
     line-height:1!important;
     padding-left:7px!important;
     padding-right:7px!important;
@@ -83,7 +84,7 @@ body {
 }
 
 .card-header {
-    font-size:1.2rem!important;
+    font-size:1.1rem!important;
     color:#007bff!important;
     opacity:0.8;
 }
@@ -128,6 +129,7 @@ td select option {
 
 .dt-buttons {
     padding-top:5px;
+    margin-left:30px;
 }
 .dt-buttons a, .dt-buttons select, .datatable .btn {
     font-size:0.8rem!important;
@@ -135,7 +137,9 @@ td select option {
     padding-left:6px!important;
     padding-right:6px!important;
     height:auto!important;
-
+}
+.dataTables_length {
+    padding-top:4px;
 }
 
 .datatable th:last-child{ width: 150px; }
@@ -197,7 +201,7 @@ ol.sortable {
     margin: 0;
     cursor: move;
     background-color: #f4f4f4;
-    color: #444;
+    color: #343a40;
     border-color: #c6c6c6;
 }
 
@@ -305,8 +309,10 @@ li.mjs-nestedSortable-collapsed.mjs-nestedSortable-hovering div {
 
 .main-footer {
     padding:5px!important;
+    padding-left:10px!important;
+    padding-right:10px!important;
 }
 
 .main-footer * {
-    color:#4b545c!important;
+    color:#343a40!important;
 }

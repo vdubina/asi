@@ -169,7 +169,7 @@
             buttons: [
                 {
                     extend: 'selectAll',
-                    className: 'btn-primary',
+                    className: 'btn-default',
                     text: selectAllButtonTrans,
                     exportOptions: {
                         columns: ':visible'
@@ -182,7 +182,7 @@
                 },
                 {
                     extend: 'selectNone',
-                    className: 'btn-primary',
+                    className: 'btn-default',
                     text: selectNoneButtonTrans,
                     exportOptions: {
                         columns: ':visible'
