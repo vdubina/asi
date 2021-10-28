@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-       {{$contentBlockType->name}} {{ trans('global.item') }} {{ trans('global.create') }}
+        {{ trans('global.create') }} {{$contentBlockType->name}}
     </div>
 
     <div class="card-body">

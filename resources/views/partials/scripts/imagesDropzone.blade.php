@@ -1,5 +1,5 @@
 <script>
-    Dropzone.options.{{ lcfirst(str_replace(" ","",Str::headline($key))) }}Dropzone = {
+    Dropzone.options.{{ NamingConventionsHelper::pluralToSingular($key, '', 'lcfirst') }}Dropzone = {
         url: '{{ route('admin.'.$route.'.storeMedia') }}',
         maxFilesize: 2, // MB
         acceptedFiles: '.jpeg,.jpg,.png,.gif',
