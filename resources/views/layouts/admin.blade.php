@@ -169,7 +169,7 @@
             buttons: [
                 {
                     extend: 'selectAll',
-                    className: 'btn-default',
+                    className: 'btn btn-primary',
                     text: selectAllButtonTrans,
                     exportOptions: {
                         columns: ':visible'
@@ -182,7 +182,7 @@
                 },
                 {
                     extend: 'selectNone',
-                    className: 'btn-default',
+                    className: 'btn btn-primary',
                     text: selectNoneButtonTrans,
                     exportOptions: {
                         columns: ':visible'
@@ -190,7 +190,7 @@
                 },
                 {
                     extend: 'copy',
-                    className: 'btn-default',
+                    className: 'btn btn-default',
                     text: copyButtonTrans,
                     exportOptions: {
                         columns: ':visible'
@@ -198,7 +198,7 @@
                 },
                 {
                     extend: 'csv',
-                    className: 'btn-default',
+                    className: 'btn btn-default',
                     text: csvButtonTrans,
                     exportOptions: {
                         columns: ':visible'
@@ -206,7 +206,7 @@
                 },
                 {
                     extend: 'excel',
-                    className: 'btn-default',
+                    className: 'btn btn-default',
                     text: excelButtonTrans,
                     exportOptions: {
                         columns: ':visible'
@@ -214,7 +214,7 @@
                 },
                 {
                     extend: 'pdf',
-                    className: 'btn-default',
+                    className: 'btn btn-default',
                     text: pdfButtonTrans,
                     exportOptions: {
                         columns: ':visible'
@@ -222,7 +222,7 @@
                 },
                 {
                     extend: 'print',
-                    className: 'btn-default',
+                    className: 'btn btn-default',
                     text: printButtonTrans,
                     exportOptions: {
                         columns: ':visible'
@@ -230,7 +230,7 @@
                 },
                 {
                     extend: 'colvis',
-                    className: 'btn-default',
+                    className: 'btn btn-default',
                     text: colvisButtonTrans,
                     exportOptions: {
                         columns: ':visible'
