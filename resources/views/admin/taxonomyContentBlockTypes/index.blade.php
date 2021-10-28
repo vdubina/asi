@@ -79,7 +79,7 @@
 @section('scripts')
     @include('partials.scripts.dataTableButtons', [
      'route'=>'taxonomy-content-block-types',
-     'order'=>'[[ 1, "asc" ]]',
+     'order'=>'[[ 2, "asc" ]]',
      'pageLength'=>10
     ])
 @endsection
