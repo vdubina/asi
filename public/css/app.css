@@ -40,7 +40,7 @@
 
 table.dataTable thead th {
     border-bottom:1px;
-    background-color:#495057!important;
+    background-color:#343a40!important;
     color:#FFFFFF;
     font-weight:normal;
 }
@@ -118,6 +118,10 @@ td select option {
     padding: .6em .8em .5em 1.4em;
 }
 
+.sidebar-dark-primary {
+    background-color:#212529!important;
+}
+
 .sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active, .sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active:hover {
     background-color:#007bff!important;
     color:#FFFFFF;
@@ -145,7 +149,7 @@ td select option {
 .datatable th:last-child{ width: 150px; }
 
 .brand-text {
-    font-size:0.8rem!important;
+    font-size:0.75rem!important;
 }
 
 .brand-image {
