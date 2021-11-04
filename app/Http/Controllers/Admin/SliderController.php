@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroySliderRequest;
 use App\Http\Requests\StoreSliderRequest;
 use App\Http\Requests\UpdateSliderRequest;
+use App\Models\ContentCategory;
 use App\Models\Slider;
 use Gate;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class SliderController extends Controller
     {
         abort_if(Gate::denies('slider_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $sliders = Slider::all();
+        $sliders = Slider::with(['show_on_pages'])->get();
 
         return view('admin.sliders.index', compact('sliders'));
     }
@@ -30,12 +31,15 @@ class SliderController extends Controller
     {
         abort_if(Gate::denies('slider_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.sliders.create');
+        $show_on_pages = ContentCategory::pluck('name', 'id');
+
+        return view('admin.sliders.create', compact('show_on_pages'));
     }
 
     public function store(StoreSliderRequest $request)
     {
         $slider = Slider::create($request->all());
+        $slider->show_on_pages()->sync($request->input('show_on_pages', []));
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $slider->id]);
         }
@@ -47,12 +51,17 @@ class SliderController extends Controller
     {
         abort_if(Gate::denies('slider_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.sliders.edit', compact('slider'));
+        $show_on_pages = ContentCategory::pluck('name', 'id');
+
+        $slider->load('show_on_pages');
+
+        return view('admin.sliders.edit', compact('show_on_pages', 'slider'));
     }
 
     public function update(UpdateSliderRequest $request, Slider $slider)
     {
         $slider->update($request->all());
+        $slider->show_on_pages()->sync($request->input('show_on_pages', []));
 
         return redirect()->route('admin.sliders.index');
     }
@@ -60,6 +69,8 @@ class SliderController extends Controller
     public function show(Slider $slider)
     {
         abort_if(Gate::denies('slider_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $slider->load('show_on_pages', 'fieldSliderSliderImages');
 
         return view('admin.sliders.show', compact('slider'));
     }

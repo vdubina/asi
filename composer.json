@@ -8,25 +8,21 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^7.3|^8.0",
         "bugsnag/bugsnag-laravel": "^2.21",
-        "daniel-furmanov/laravel-formatter": "^2.0",
-        "darkaonline/l5-swagger": "^8.0",
         "doctrine/dbal": "^3.0",
-        "f9webltd/laravel-api-response-helpers": "^1.5",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "kalnoy/nestedset": "^6.0",
         "laravel/dusk": "^6.11",
         "laravel/framework": "^8.12",
-        "laravel/passport": "^10.1",
         "laravel/tinker": "^2.5",
+        "yajra/laravel-datatables-oracle": "^9.18",
         "laravel/ui": "^3.3",
         "laraveldaily/laravel-charts": "^0.1.24",
-        "nuovo/spreadsheet-reader": "^0.5.11",
         "spatie/laravel-medialibrary": "^8.7",
-        "yajra/laravel-datatables-oracle": "^9.18"
+        "nuovo/spreadsheet-reader": "^0.5.11",
+        "laravel/sanctum": "^2.8"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -39,8 +35,7 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true,
-        "disable-tls": false
+        "sort-packages": true
     },
     "extra": {
         "laravel": {

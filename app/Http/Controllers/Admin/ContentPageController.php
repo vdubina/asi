@@ -9,8 +9,7 @@ use App\Http\Requests\StoreContentPageRequest;
 use App\Http\Requests\UpdateContentPageRequest;
 use App\Models\ContentCategory;
 use App\Models\ContentPage;
-use App\Models\TaxonomyTag;
-use App\Models\Slider;
+use App\Models\ContentTag;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -28,9 +27,9 @@ class ContentPageController extends Controller
 
         $content_categories = ContentCategory::get();
 
-        $taxonomy_tags = TaxonomyTag::get();
+        $content_tags = ContentTag::get();
 
-        return view('admin.contentPages.index', compact('contentPages', 'content_categories', 'taxonomy_tags'));
+        return view('admin.contentPages.index', compact('contentPages', 'content_categories', 'content_tags'));
     }
 
     public function create()
@@ -39,11 +38,9 @@ class ContentPageController extends Controller
 
         $categories = ContentCategory::pluck('name', 'id');
 
-        $tags = TaxonomyTag::pluck('name', 'id');
+        $tags = ContentTag::pluck('name', 'id');
 
-        $sliders = Slider::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.contentPages.create', compact('categories', 'tags','sliders'));
+        return view('admin.contentPages.create', compact('categories', 'tags'));
     }
 
     public function store(StoreContentPageRequest $request)
@@ -68,13 +65,11 @@ class ContentPageController extends Controller
 
         $categories = ContentCategory::pluck('name', 'id');
 
-        $tags = TaxonomyTag::pluck('name', 'id');
-
-        $sliders = Slider::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $tags = ContentTag::pluck('name', 'id');
 
         $contentPage->load('categories', 'tags');
 
-        return view('admin.contentPages.edit', compact('categories', 'tags', 'contentPage', 'sliders'));
+        return view('admin.contentPages.edit', compact('categories', 'tags', 'contentPage'));
     }
 
     public function update(UpdateContentPageRequest $request, ContentPage $contentPage)
@@ -100,7 +95,7 @@ class ContentPageController extends Controller
     {
         abort_if(Gate::denies('content_page_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contentPage->load('categories', 'tags');
+        $contentPage->load('categories', 'tags', 'showOnPagesContentBlocks');
 
         return view('admin.contentPages.show', compact('contentPage'));
     }
