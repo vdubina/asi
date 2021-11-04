@@ -70,7 +70,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display:none;">
                 <label for="excerpt">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
                 <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt', $contentPage->excerpt) }}</textarea>
                 @if($errors->has('excerpt'))

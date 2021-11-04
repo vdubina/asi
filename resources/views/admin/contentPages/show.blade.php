@@ -57,7 +57,7 @@
                             {!! $contentPage->page_text !!}
                         </td>
                     </tr>
-                    <tr>
+                    <tr style="display:none">
                         <th>
                             {{ trans('cruds.contentPage.fields.excerpt') }}
                         </th>
