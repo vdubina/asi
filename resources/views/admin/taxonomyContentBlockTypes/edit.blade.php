@@ -27,8 +27,9 @@
                 <span class="help-block">{{ trans('cruds.taxonomyContentBlockType.fields.fa_icon_helper') }}</span>
             </div>
             <div class="form-group">
-                @include('partials.buttons.save')
-                @include('partials.buttons.back', ['url'=>route('admin.taxonomy-content-block-types.index')])
+                <button class="btn btn-danger" type="submit">
+                    {{ trans('global.save') }}
+                </button>
             </div>
         </form>
     </div>

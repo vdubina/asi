@@ -14,7 +14,6 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Http\Middleware\ForceJsonRequest::class,
     ];
 
     protected $routeMiddleware = [
@@ -28,9 +27,6 @@ class Kernel extends HttpKernel
         'throttle'         => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified'         => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         '2fa'              => \App\Http\Middleware\TwoFactorMiddleware::class,
-        'scopes' => \Laravel\Passport\Http\Middleware\CheckScopes::class,
-        'scope' => \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,
-        'basicAuth' => \App\Http\Middleware\BasicAuth::class
     ];
 
     protected $middlewareGroups = [
@@ -48,6 +44,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerificationMiddleware::class,
         ],
         'api' => [
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\AuthGates::class,

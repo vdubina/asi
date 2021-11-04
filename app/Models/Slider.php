@@ -44,6 +44,11 @@ class Slider extends Model implements HasMedia
         return $this->belongsToMany(SliderImage::class);
     }
 
+    public function show_on_pages()
+    {
+        return $this->belongsToMany(ContentCategory::class);
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
