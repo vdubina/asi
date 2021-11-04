@@ -3,13 +3,15 @@
 
 <div class="card">
     <div class="card-header">
-        {{$contentBlockType->name}} {{ trans('global.item') }} {{ trans('global.show') }}
+        {{ trans('global.show') }} {{ trans('cruds.contentBlock.title') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                @include('partials.buttons.back', ['url'=>route('admin.content-blocks.index',$contentBlockType->id)])
+                <a class="btn btn-default" href="{{ route('admin.content-blocks.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
             </div>
             <table class="table table-bordered table-striped">
                 <tbody>
@@ -70,7 +72,9 @@
                 </tbody>
             </table>
             <div class="form-group">
-                @include('partials.buttons.back', ['url'=>route('admin.content-blocks.index',$contentBlockType->id)])
+                <a class="btn btn-default" href="{{ route('admin.content-blocks.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
             </div>
         </div>
     </div>

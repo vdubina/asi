@@ -16,7 +16,6 @@ class CreateStructuresTable extends Migration
             $table->boolean('external')->default(0)->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->nestedSet();
         });
     }
 }

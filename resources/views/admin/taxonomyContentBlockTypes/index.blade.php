@@ -3,7 +3,9 @@
 @can('taxonomy_content_block_type_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            @include('partials.buttons.add', ['url'=>route('admin.taxonomy-content-block-types.create')])
+            <a class="btn btn-success" href="{{ route('admin.taxonomy-content-block-types.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.taxonomyContentBlockType.title_singular') }}
+            </a>
         </div>
     </div>
 @endcan
@@ -14,7 +16,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" {{ config('panel.datatables.css') }} datatable-TaxonomyContentBlockType">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-TaxonomyContentBlockType">
                 <thead>
                     <tr>
                         <th width="10">
@@ -22,9 +24,6 @@
                         </th>
                         <th>
                             {{ trans('cruds.taxonomyContentBlockType.fields.name') }}
-                        </th>
-                        <th width="20">
-                            {{ trans('cruds.taxonomyContentBlockType.fields.id') }}
                         </th>
                         <th>
                             &nbsp;
@@ -38,11 +37,7 @@
 
                             </td>
                             <td>
-                                <i class="fa-fw nav-icon fas fa-{{ $taxonomyContentBlockType->fa_icon }}"></i>
                                 {{ $taxonomyContentBlockType->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $taxonomyContentBlockType->id ?? '' }}
                             </td>
                             <td>
                                 @can('taxonomy_content_block_type_show')
@@ -74,12 +69,57 @@
         </div>
     </div>
 </div>
-@endsection
 
+
+
+@endsection
 @section('scripts')
-    @include('partials.scripts.dataTableButtons', [
-     'route'=>'taxonomy-content-block-types',
-     'order'=>'[[ 2, "asc" ]]',
-     'pageLength'=>10
-    ])
+@parent
+<script>
+    $(function () {
+  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+@can('taxonomy_content_block_type_delete')
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+  let deleteButton = {
+    text: deleteButtonTrans,
+    url: "{{ route('admin.taxonomy-content-block-types.massDestroy') }}",
+    className: 'btn-danger',
+    action: function (e, dt, node, config) {
+      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+          return $(entry).data('entry-id')
+      });
+
+      if (ids.length === 0) {
+        alert('{{ trans('global.datatables.zero_selected') }}')
+
+        return
+      }
+
+      if (confirm('{{ trans('global.areYouSure') }}')) {
+        $.ajax({
+          headers: {'x-csrf-token': _token},
+          method: 'POST',
+          url: config.url,
+          data: { ids: ids, _method: 'DELETE' }})
+          .done(function () { location.reload() })
+      }
+    }
+  }
+  dtButtons.push(deleteButton)
+@endcan
+
+  $.extend(true, $.fn.dataTable.defaults, {
+    orderCellsTop: true,
+    order: [[ 1, 'asc' ]],
+    pageLength: 100,
+  });
+  let table = $('.datatable-TaxonomyContentBlockType:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
+      $($.fn.dataTable.tables(true)).DataTable()
+          .columns.adjust();
+  });
+  
+})
+
+</script>
 @endsection

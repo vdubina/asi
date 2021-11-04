@@ -19,8 +19,9 @@
                 <span class="help-block">{{ trans('cruds.permission.fields.title_helper') }}</span>
             </div>
             <div class="form-group">
-                @include('partials.buttons.save')
-                @include('partials.buttons.back', ['url'=>route('admin.permissions.index')])
+                <button class="btn btn-danger" type="submit">
+                    {{ trans('global.save') }}
+                </button>
             </div>
         </form>
     </div>
