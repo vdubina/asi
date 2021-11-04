@@ -12,7 +12,6 @@ use App\Models\ContentPage;
 use App\Models\TaxonomyContentBlockType;
 use Gate;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,27 +19,27 @@ class ContentBlockController extends Controller
 {
     use MediaUploadingTrait;
 
-    public function index(TaxonomyContentBlockType $contentBlockType, Request $request)
+    public function index()
     {
         abort_if(Gate::denies('content_block_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contentBlocks = ContentBlock::with(['type', 'show_on_pages', 'media'])->get()->where('type_id', '=', $contentBlockType->id);
+        $contentBlocks = ContentBlock::with(['type', 'show_on_pages', 'media'])->get();
 
-        return view('admin.contentBlocks.index', compact('contentBlocks', 'contentBlockType'));
+        return view('admin.contentBlocks.index', compact('contentBlocks'));
     }
 
-    public function create(TaxonomyContentBlockType $contentBlockType)
+    public function create()
     {
         abort_if(Gate::denies('content_block_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contentBlockTypes = TaxonomyContentBlockType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $types = TaxonomyContentBlockType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $show_on_pages = ContentPage::pluck('title', 'id');
 
-        return view('admin.contentBlocks.create', compact('contentBlockTypes', 'show_on_pages', 'contentBlockType'));
+        return view('admin.contentBlocks.create', compact('types', 'show_on_pages'));
     }
 
-    public function store(TaxonomyContentBlockType $contentBlockType, StoreContentBlockRequest $request)
+    public function store(StoreContentBlockRequest $request)
     {
         $contentBlock = ContentBlock::create($request->all());
         $contentBlock->show_on_pages()->sync($request->input('show_on_pages', []));
@@ -52,23 +51,23 @@ class ContentBlockController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $contentBlock->id]);
         }
 
-        return redirect()->route('admin.content-blocks.index', $contentBlockType->id);
+        return redirect()->route('admin.content-blocks.index');
     }
 
-    public function edit(TaxonomyContentBlockType $contentBlockType, ContentBlock $contentBlock)
+    public function edit(ContentBlock $contentBlock)
     {
         abort_if(Gate::denies('content_block_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contentBlockTypes = TaxonomyContentBlockType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $types = TaxonomyContentBlockType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $show_on_pages = ContentPage::pluck('title', 'id');
 
         $contentBlock->load('type', 'show_on_pages');
 
-        return view('admin.contentBlocks.edit', compact('contentBlockTypes', 'show_on_pages', 'contentBlock', 'contentBlockType'));
+        return view('admin.contentBlocks.edit', compact('types', 'show_on_pages', 'contentBlock'));
     }
 
-    public function update(TaxonomyContentBlockType $contentBlockType, UpdateContentBlockRequest $request, ContentBlock $contentBlock)
+    public function update(UpdateContentBlockRequest $request, ContentBlock $contentBlock)
     {
         $contentBlock->update($request->all());
         $contentBlock->show_on_pages()->sync($request->input('show_on_pages', []));
@@ -83,19 +82,19 @@ class ContentBlockController extends Controller
             $contentBlock->images->delete();
         }
 
-        return redirect()->route('admin.content-blocks.index', $contentBlockType->id);
+        return redirect()->route('admin.content-blocks.index');
     }
 
-    public function show(TaxonomyContentBlockType $contentBlockType, ContentBlock $contentBlock)
+    public function show(ContentBlock $contentBlock)
     {
         abort_if(Gate::denies('content_block_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $contentBlock->load('type', 'show_on_pages');
 
-        return view('admin.contentBlocks.show', compact('contentBlock', 'contentBlockType'));
+        return view('admin.contentBlocks.show', compact('contentBlock'));
     }
 
-    public function destroy(TaxonomyContentBlockType $contentBlockType, ContentBlock $contentBlock)
+    public function destroy(ContentBlock $contentBlock)
     {
         abort_if(Gate::denies('content_block_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 

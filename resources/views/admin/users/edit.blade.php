@@ -62,8 +62,9 @@
                 <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
             </div>
             <div class="form-group">
-                @include('partials.buttons.save')
-                @include('partials.buttons.back', ['url'=>route('admin.users.index')])
+                <button class="btn btn-danger" type="submit">
+                    {{ trans('global.save') }}
+                </button>
             </div>
         </form>
     </div>

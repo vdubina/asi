@@ -17,8 +17,8 @@ class ContentBlockTest extends DuskTestCase
         $admin = App\Models\User::find(1);
         $this->browse(function (Browser $browser) use ($admin) {
             $browser->loginAs($admin);
-            $browser->visit(route('admin.contentblock.index', 1));
-            $browser->assertRouteIs('admin.contentblock.index', 1);
+            $browser->visit(route('admin.contentblock.index'));
+            $browser->assertRouteIs('admin.contentblock.index');
         });
     }
 }
