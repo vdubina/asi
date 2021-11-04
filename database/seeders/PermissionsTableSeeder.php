@@ -651,6 +651,66 @@ class PermissionsTableSeeder extends Seeder
                 'title' => 'taxonomy_content_block_type_access',
             ],
             [
+                'id' => 183,
+                'title' => 'course_coupon_edit',
+            ],
+            [
+                'id' => 184,
+                'title' => 'course_coupon_show',
+            ],
+            [
+                'id' => 185,
+                'title' => 'course_coupon_delete',
+            ],
+            [
+                'id' => 186,
+                'title' => 'course_coupon_access',
+            ],
+            [
+                'id' => 187,
+                'title' => 'course_coupon_create',
+            ],
+            [
+                'id' => 188,
+                'title' => 'course_coupon_edit',
+            ],
+            [
+                'id' => 189,
+                'title' => 'course_coupon_show',
+            ],
+            [
+                'id' => 190,
+                'title' => 'course_coupon_delete',
+            ],
+            [
+                'id' => 191,
+                'title' => 'course_coupon_access',
+            ],
+            [
+                'id' => 192,
+                'title' => 'course_coupon_create',
+            ],
+            [
+                'id' => 193,
+                'title' => 'setting_create',
+            ],
+            [
+                'id' => 194,
+                'title' => 'setting_edit',
+            ],
+            [
+                'id' => 195,
+                'title' => 'setting_show',
+            ],
+            [
+                'id' => 196,
+                'title' => 'setting_delete',
+            ],
+            [
+                'id' => 197,
+                'title' => 'setting_access',
+            ],
+            [
                 'id' => 100001,
                 'title' => 'dev_documentation_access',
             ],

@@ -168,6 +168,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('course-products/ckmedia', 'CourseProductController@storeCKEditorImages')->name('course-products.storeCKEditorImages');
     Route::resource('course-products', 'CourseProductController');
 
+    // Course Coupon
+    Route::delete('course-coupons/destroy', 'CourseCouponController@massDestroy')->name('course-coupons.massDestroy');
+    Route::post('course-coupons/media', 'CourseCouponController@storeMedia')->name('course-coupons.storeMedia');
+    Route::post('course-coupons/ckmedia', 'CourseCouponController@storeCKEditorImages')->name('course-coupons.storeCKEditorImages');
+    Route::resource('course-coupons', 'CourseCouponController');
+
     // Course Instructor
     Route::delete('course-instructors/destroy', 'CourseInstructorController@massDestroy')->name('course-instructors.massDestroy');
     Route::post('course-instructors/media', 'CourseInstructorController@storeMedia')->name('course-instructors.storeMedia');
@@ -196,6 +202,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('content-blocks/{content_block_type}/{content_block}','ContentBlockController@update')->name('content-blocks.update');
     Route::delete('content-blocks/{content_block_type}/{content_block}','ContentBlockController@destroy')->name('content-blocks.destroy');
 
+    // Settings
+    Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
+    Route::resource('settings', 'SettingsController');
 
     // System Calendar
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
