@@ -1,14 +1,10 @@
 <?php
 
 return [
-    'item'                           => 'Item',
     'actions'                        => 'Actions',
     'add'                            => 'Add',
-    'add_new'                        => 'Add New',
-    'reorder'                        => 'Reorder',
     'allRightsReserved'              => 'All rights reserved.',
     'areYouSure'                     => 'Are you sure?',
-    'areYouSureDeleteNested'         => 'Are you sure? Item and all related children items will be removed!',
     'clickHereToVerify'              => 'Click here to verify',
     'create'                         => 'Create',
     'dashboard'                      => 'Dashboard',
@@ -36,7 +32,6 @@ return [
     'reset_password'                 => 'Reset Password',
     'send_password'                  => 'Send Password Reset Link',
     'save'                           => 'Save',
-    'save_changes'                   => 'Save Changes',
     'search'                         => 'Search',
     'searching'                      => 'Searching',
     'no_results'                     => 'No results',
@@ -63,8 +58,6 @@ return [
     'change_password_success'        => 'Password changed successfully',
     'delete_account_success'         => 'Account deleted successfully',
     'saved'                          => 'Saved.',
-    'reorder_saved'                  => 'Your order has been saved.',
-    'reorder_saved'                  => 'Your order has been saved.',
     'profile_information'            => 'Profile information',
     'all_messages'                   => 'All Messages',
     'new_message'                    => 'New message',
@@ -206,6 +199,7 @@ return [
     'end_time'                       => 'End time',
     'entry_date'                     => 'Entry date',
     'excerpt'                        => 'Excerpt',
+    'faq_management'                 => 'FAQ Management',
     'featured_image'                 => 'Featured image',
     'fee_percent'                    => 'Fee percent',
     'file'                           => 'File',
@@ -317,5 +311,4 @@ return [
     'team-members'                   => 'Team members',
     'calendar'                       => 'Calendar',
     'messenger'                      => 'Messenger',
-    'apidocumentation'              => 'Api Documentation',
 ];

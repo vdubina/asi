@@ -3,7 +3,9 @@
 @can('taxonomy_arms_code_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            @include('partials.buttons.add', ['url'=>route('admin.taxonomy-arms-codes.create')])
+            <a class="btn btn-success" href="{{ route('admin.taxonomy-arms-codes.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.taxonomyArmsCode.title_singular') }}
+            </a>
         </div>
     </div>
 @endcan
@@ -14,7 +16,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" {{ config('panel.datatables.css') }} datatable-TaxonomyArmsCode">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-TaxonomyArmsCode">
                 <thead>
                     <tr>
                         <th width="10">
@@ -67,13 +69,57 @@
         </div>
     </div>
 </div>
-@endsection
 
+
+
+@endsection
 @section('scripts')
-    @include('partials.scripts.dataTableButtons', [
-     'route'=>'taxonomy-arms-codes',
-     'order'=>'[[ 1, "asc" ]]',
-     'pageLength'=>10
-    ])
-@endsection
+@parent
+<script>
+    $(function () {
+  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+@can('taxonomy_arms_code_delete')
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+  let deleteButton = {
+    text: deleteButtonTrans,
+    url: "{{ route('admin.taxonomy-arms-codes.massDestroy') }}",
+    className: 'btn-danger',
+    action: function (e, dt, node, config) {
+      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+          return $(entry).data('entry-id')
+      });
 
+      if (ids.length === 0) {
+        alert('{{ trans('global.datatables.zero_selected') }}')
+
+        return
+      }
+
+      if (confirm('{{ trans('global.areYouSure') }}')) {
+        $.ajax({
+          headers: {'x-csrf-token': _token},
+          method: 'POST',
+          url: config.url,
+          data: { ids: ids, _method: 'DELETE' }})
+          .done(function () { location.reload() })
+      }
+    }
+  }
+  dtButtons.push(deleteButton)
+@endcan
+
+  $.extend(true, $.fn.dataTable.defaults, {
+    orderCellsTop: true,
+    order: [[ 1, 'asc' ]],
+    pageLength: 100,
+  });
+  let table = $('.datatable-TaxonomyArmsCode:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
+      $($.fn.dataTable.tables(true)).DataTable()
+          .columns.adjust();
+  });
+  
+})
+
+</script>
+@endsection

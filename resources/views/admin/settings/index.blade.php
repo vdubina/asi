@@ -3,7 +3,9 @@
 @can('setting_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            @include('partials.buttons.add', ['url'=>route('admin.settings.create')])
+            <a class="btn btn-success" href="{{ route('admin.settings.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.setting.title_singular') }}
+            </a>
         </div>
     </div>
 @endcan
@@ -14,7 +16,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="  {{ config('panel.datatables.css') }} datatable-Setting">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Setting">
                 <thead>
                     <tr>
                         <th width="10">
@@ -74,11 +76,56 @@
     </div>
 </div>
 
+
+
 @endsection
 @section('scripts')
-    @include('partials.scripts.dataTableButtons', [
-     'route'=>'settings',
-     'order'=>'[[ 1, "asc" ]]',
-     'pageLength'=>10
-    ])
+@parent
+<script>
+    $(function () {
+  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+@can('setting_delete')
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+  let deleteButton = {
+    text: deleteButtonTrans,
+    url: "{{ route('admin.settings.massDestroy') }}",
+    className: 'btn-danger',
+    action: function (e, dt, node, config) {
+      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+          return $(entry).data('entry-id')
+      });
+
+      if (ids.length === 0) {
+        alert('{{ trans('global.datatables.zero_selected') }}')
+
+        return
+      }
+
+      if (confirm('{{ trans('global.areYouSure') }}')) {
+        $.ajax({
+          headers: {'x-csrf-token': _token},
+          method: 'POST',
+          url: config.url,
+          data: { ids: ids, _method: 'DELETE' }})
+          .done(function () { location.reload() })
+      }
+    }
+  }
+  dtButtons.push(deleteButton)
+@endcan
+
+  $.extend(true, $.fn.dataTable.defaults, {
+    orderCellsTop: true,
+    order: [[ 1, 'desc' ]],
+    pageLength: 100,
+  });
+  let table = $('.datatable-Setting:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
+      $($.fn.dataTable.tables(true)).DataTable()
+          .columns.adjust();
+  });
+  
+})
+
+</script>
 @endsection

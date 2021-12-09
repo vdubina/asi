@@ -2,28 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\NestedTreeHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyStructureRequest;
 use App\Http\Requests\StoreStructureRequest;
 use App\Http\Requests\UpdateStructureRequest;
-use App\Http\Requests\ReorderStructureRequest;
 use App\Models\ContentPage;
 use App\Models\Structure;
-use F9Web\ApiResponseHelpers;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class StructureController extends Controller
 {
-    use ApiResponseHelpers;
-
     public function index()
     {
         abort_if(Gate::denies('structure_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $structures = Structure::with(['page','ancestors'])->defaultOrder()->get();
+        $structures = Structure::with(['page'])->get();
 
         return view('admin.structures.index', compact('structures'));
     }
@@ -85,26 +80,5 @@ class StructureController extends Controller
         Structure::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
-    }
-
-    public function reorder()
-    {
-        abort_if(Gate::denies('structure_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $structures = Structure::with(['page','ancestors'])->defaultOrder()->withDepth()->having('depth', '=', 0)->get();
-
-        return view('admin.structures.reorder', compact('structures'));
-    }
-
-    public function reorderStore(ReorderStructureRequest $request)
-    {
-        abort_if(Gate::denies('structure_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        Structure::rebuildTree(
-            NestedTreeHelper::parseData($request->input('tree')),
-            false
-        );
-
-        return $this->respondOk('Order Saved');
     }
 }

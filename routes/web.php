@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
@@ -16,13 +14,6 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
     Route::get('/', 'HomeController@index')->name('home');
-
-    // Structure
-    Route::delete('structures/destroy', 'StructureController@massDestroy')->name('structures.massDestroy');
-    Route::resource('structures', 'StructureController');
-    Route::get('structures/reorder/list','StructureController@reorder')->name('structures.reorder');
-    Route::post('structures/reorder/store','StructureController@reorderStore')->name('structures.reorderStore');
-
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -39,6 +30,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
     Route::get('user-alerts/read', 'UserAlertsController@read');
     Route::resource('user-alerts', 'UserAlertsController', ['except' => ['edit', 'update']]);
+
+    // Faq Category
+    Route::delete('faq-categories/destroy', 'FaqCategoryController@massDestroy')->name('faq-categories.massDestroy');
+    Route::resource('faq-categories', 'FaqCategoryController');
+
+    // Faq Question
+    Route::delete('faq-questions/destroy', 'FaqQuestionController@massDestroy')->name('faq-questions.massDestroy');
+    Route::resource('faq-questions', 'FaqQuestionController');
 
     // Taxonomy Course
     Route::delete('taxonomy-courses/destroy', 'TaxonomyCourseController@massDestroy')->name('taxonomy-courses.massDestroy');
@@ -136,13 +135,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('taxonomy-web-categories/ckmedia', 'TaxonomyWebCategoryController@storeCKEditorImages')->name('taxonomy-web-categories.storeCKEditorImages');
     Route::resource('taxonomy-web-categories', 'TaxonomyWebCategoryController');
 
-    // Taxonomy Tag
-    Route::delete('taxonomy-tags/destroy', 'TaxonomyTagController@massDestroy')->name('taxonomy-tags.massDestroy');
-    Route::resource('taxonomy-tags', 'TaxonomyTagController');
+    // Testimonial Type
+    Route::delete('testimonial-types/destroy', 'TestimonialTypeController@massDestroy')->name('testimonial-types.massDestroy');
+    Route::post('testimonial-types/media', 'TestimonialTypeController@storeMedia')->name('testimonial-types.storeMedia');
+    Route::post('testimonial-types/ckmedia', 'TestimonialTypeController@storeCKEditorImages')->name('testimonial-types.storeCKEditorImages');
+    Route::resource('testimonial-types', 'TestimonialTypeController');
 
-    // Taxonomy Content Block Type
-    Route::delete('taxonomy-content-block-types/destroy', 'TaxonomyContentBlockTypeController@massDestroy')->name('taxonomy-content-block-types.massDestroy');
-    Route::resource('taxonomy-content-block-types', 'TaxonomyContentBlockTypeController');
+    // Testimonial
+    Route::delete('testimonials/destroy', 'TestimonialController@massDestroy')->name('testimonials.massDestroy');
+    Route::post('testimonials/media', 'TestimonialController@storeMedia')->name('testimonials.storeMedia');
+    Route::post('testimonials/ckmedia', 'TestimonialController@storeCKEditorImages')->name('testimonials.storeCKEditorImages');
+    Route::resource('testimonials', 'TestimonialController');
 
     // Slider
     Route::delete('sliders/destroy', 'SliderController@massDestroy')->name('sliders.massDestroy');
@@ -168,12 +171,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('course-products/ckmedia', 'CourseProductController@storeCKEditorImages')->name('course-products.storeCKEditorImages');
     Route::resource('course-products', 'CourseProductController');
 
-    // Course Coupon
-    Route::delete('course-coupons/destroy', 'CourseCouponController@massDestroy')->name('course-coupons.massDestroy');
-    Route::post('course-coupons/media', 'CourseCouponController@storeMedia')->name('course-coupons.storeMedia');
-    Route::post('course-coupons/ckmedia', 'CourseCouponController@storeCKEditorImages')->name('course-coupons.storeCKEditorImages');
-    Route::resource('course-coupons', 'CourseCouponController');
-
     // Course Instructor
     Route::delete('course-instructors/destroy', 'CourseInstructorController@massDestroy')->name('course-instructors.massDestroy');
     Route::post('course-instructors/media', 'CourseInstructorController@storeMedia')->name('course-instructors.storeMedia');
@@ -184,29 +181,74 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
     Route::resource('content-categories', 'ContentCategoryController');
 
+    // Content Tag
+    Route::delete('content-tags/destroy', 'ContentTagController@massDestroy')->name('content-tags.massDestroy');
+    Route::resource('content-tags', 'ContentTagController');
+
     // Content Page
     Route::delete('content-pages/destroy', 'ContentPageController@massDestroy')->name('content-pages.massDestroy');
     Route::post('content-pages/media', 'ContentPageController@storeMedia')->name('content-pages.storeMedia');
     Route::post('content-pages/ckmedia', 'ContentPageController@storeCKEditorImages')->name('content-pages.storeCKEditorImages');
     Route::resource('content-pages', 'ContentPageController');
 
+    // Structure
+    Route::delete('structures/destroy', 'StructureController@massDestroy')->name('structures.massDestroy');
+    Route::resource('structures', 'StructureController');
+
     // Content Block
     Route::delete('content-blocks/destroy', 'ContentBlockController@massDestroy')->name('content-blocks.massDestroy');
     Route::post('content-blocks/media', 'ContentBlockController@storeMedia')->name('content-blocks.storeMedia');
     Route::post('content-blocks/ckmedia', 'ContentBlockController@storeCKEditorImages')->name('content-blocks.storeCKEditorImages');
-    Route::get('content-blocks/{content_block_type}','ContentBlockController@index')->name('content-blocks.index');
-    Route::post('content-blocks/{content_block_type}','ContentBlockController@store')->name('content-blocks.store');
-    Route::get('content-blocks/{content_block_type}/create','ContentBlockController@create')->name('content-blocks.create');
-    Route::get('content-blocks/{content_block_type}/{content_block}/show','ContentBlockController@show')->name('content-blocks.show');
-    Route::get('content-blocks/{content_block_type}/{content_block}/edit','ContentBlockController@edit')->name('content-blocks.edit');
-    Route::put('content-blocks/{content_block_type}/{content_block}','ContentBlockController@update')->name('content-blocks.update');
-    Route::delete('content-blocks/{content_block_type}/{content_block}','ContentBlockController@destroy')->name('content-blocks.destroy');
+    Route::resource('content-blocks', 'ContentBlockController');
+
+    // Taxonomy Content Block Type
+    Route::delete('taxonomy-content-block-types/destroy', 'TaxonomyContentBlockTypeController@massDestroy')->name('taxonomy-content-block-types.massDestroy');
+    Route::resource('taxonomy-content-block-types', 'TaxonomyContentBlockTypeController');
+
+    // Course Coupon
+    Route::delete('course-coupons/destroy', 'CourseCouponController@massDestroy')->name('course-coupons.massDestroy');
+    Route::resource('course-coupons', 'CourseCouponController');
 
     // Settings
     Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
     Route::resource('settings', 'SettingsController');
 
-    // System Calendar
+    // Taxonomy Shipping Method
+    Route::delete('taxonomy-shipping-methods/destroy', 'TaxonomyShippingMethodController@massDestroy')->name('taxonomy-shipping-methods.massDestroy');
+    Route::post('taxonomy-shipping-methods/media', 'TaxonomyShippingMethodController@storeMedia')->name('taxonomy-shipping-methods.storeMedia');
+    Route::post('taxonomy-shipping-methods/ckmedia', 'TaxonomyShippingMethodController@storeCKEditorImages')->name('taxonomy-shipping-methods.storeCKEditorImages');
+    Route::resource('taxonomy-shipping-methods', 'TaxonomyShippingMethodController');
+
+    // Taxonomy How You Found
+    Route::delete('taxonomy-how-you-founds/destroy', 'TaxonomyHowYouFoundController@massDestroy')->name('taxonomy-how-you-founds.massDestroy');
+    Route::post('taxonomy-how-you-founds/media', 'TaxonomyHowYouFoundController@storeMedia')->name('taxonomy-how-you-founds.storeMedia');
+    Route::post('taxonomy-how-you-founds/ckmedia', 'TaxonomyHowYouFoundController@storeCKEditorImages')->name('taxonomy-how-you-founds.storeCKEditorImages');
+    Route::resource('taxonomy-how-you-founds', 'TaxonomyHowYouFoundController');
+
+    // Taxonomy Payment Type
+    Route::delete('taxonomy-payment-types/destroy', 'TaxonomyPaymentTypeController@massDestroy')->name('taxonomy-payment-types.massDestroy');
+    Route::post('taxonomy-payment-types/media', 'TaxonomyPaymentTypeController@storeMedia')->name('taxonomy-payment-types.storeMedia');
+    Route::post('taxonomy-payment-types/ckmedia', 'TaxonomyPaymentTypeController@storeCKEditorImages')->name('taxonomy-payment-types.storeCKEditorImages');
+    Route::resource('taxonomy-payment-types', 'TaxonomyPaymentTypeController');
+
+    // Taxonomy Topic Selection Type
+    Route::delete('taxonomy-topic-selection-types/destroy', 'TaxonomyTopicSelectionTypeController@massDestroy')->name('taxonomy-topic-selection-types.massDestroy');
+    Route::post('taxonomy-topic-selection-types/media', 'TaxonomyTopicSelectionTypeController@storeMedia')->name('taxonomy-topic-selection-types.storeMedia');
+    Route::post('taxonomy-topic-selection-types/ckmedia', 'TaxonomyTopicSelectionTypeController@storeCKEditorImages')->name('taxonomy-topic-selection-types.storeCKEditorImages');
+    Route::resource('taxonomy-topic-selection-types', 'TaxonomyTopicSelectionTypeController');
+
+    // Taxonomy Course Full Short
+    Route::delete('taxonomy-course-full-shorts/destroy', 'TaxonomyCourseFullShortController@massDestroy')->name('taxonomy-course-full-shorts.massDestroy');
+    Route::post('taxonomy-course-full-shorts/media', 'TaxonomyCourseFullShortController@storeMedia')->name('taxonomy-course-full-shorts.storeMedia');
+    Route::post('taxonomy-course-full-shorts/ckmedia', 'TaxonomyCourseFullShortController@storeCKEditorImages')->name('taxonomy-course-full-shorts.storeCKEditorImages');
+    Route::resource('taxonomy-course-full-shorts', 'TaxonomyCourseFullShortController');
+
+    // Taxonomy Coupon Code
+    Route::delete('taxonomy-coupon-codes/destroy', 'TaxonomyCouponCodeController@massDestroy')->name('taxonomy-coupon-codes.massDestroy');
+    Route::post('taxonomy-coupon-codes/media', 'TaxonomyCouponCodeController@storeMedia')->name('taxonomy-coupon-codes.storeMedia');
+    Route::post('taxonomy-coupon-codes/ckmedia', 'TaxonomyCouponCodeController@storeCKEditorImages')->name('taxonomy-coupon-codes.storeCKEditorImages');
+    Route::resource('taxonomy-coupon-codes', 'TaxonomyCouponCodeController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
     Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');
@@ -217,8 +259,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('messenger/{topic}', 'MessengerController@destroyTopic')->name('messenger.destroyTopic');
     Route::post('messenger/{topic}/reply', 'MessengerController@replyToTopic')->name('messenger.reply');
     Route::get('messenger/{topic}/reply', 'MessengerController@showReply')->name('messenger.showReply');
-
-    Route::get('/documentation', 'DevController@index')->name('documentation');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

@@ -36,8 +36,8 @@ class CourseProduct extends Model implements HasMedia
     ];
 
     protected $fillable = [
-        'sku',
         'title',
+        'sku',
         'commerce_price',
         'status',
         'field_description',
