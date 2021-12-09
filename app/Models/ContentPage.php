@@ -31,7 +31,6 @@ class ContentPage extends Model implements HasMedia
     protected $fillable = [
         'title',
         'page_text',
-        'slider_id',
         'excerpt',
         'field_is_subsite_content',
         'created_at',
@@ -45,6 +44,11 @@ class ContentPage extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+    public function showOnPagesContentBlocks()
+    {
+        return $this->belongsToMany(ContentBlock::class);
+    }
+
     public function categories()
     {
         return $this->belongsToMany(ContentCategory::class);
@@ -52,12 +56,7 @@ class ContentPage extends Model implements HasMedia
 
     public function tags()
     {
-        return $this->belongsToMany(TaxonomyTag::class);
-    }
-
-    public function slider()
-    {
-        return $this->belongsTo(Slider::class);
+        return $this->belongsToMany(ContentTag::class);
     }
 
     public function getFeaturedImageAttribute()

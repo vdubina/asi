@@ -9,9 +9,11 @@
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                @include('partials.buttons.back', ['url'=>route('admin.content-pages.index')])
+                <a class="btn btn-default" href="{{ route('admin.content-pages.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
             </div>
-            <table class="table table-striped compact">
+            <table class="table table-bordered table-striped">
                 <tbody>
                     <tr>
                         <th>
@@ -57,7 +59,7 @@
                             {!! $contentPage->page_text !!}
                         </td>
                     </tr>
-                    <tr style="display:none">
+                    <tr>
                         <th>
                             {{ trans('cruds.contentPage.fields.excerpt') }}
                         </th>
@@ -88,8 +90,28 @@
                 </tbody>
             </table>
             <div class="form-group">
-                @include('partials.buttons.back', ['url'=>route('admin.content-pages.index')])
+                <a class="btn btn-default" href="{{ route('admin.content-pages.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#show_on_pages_content_blocks" role="tab" data-toggle="tab">
+                {{ trans('cruds.contentBlock.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="show_on_pages_content_blocks">
+            @includeIf('admin.contentPages.relationships.showOnPagesContentBlocks', ['contentBlocks' => $contentPage->showOnPagesContentBlocks])
         </div>
     </div>
 </div>

@@ -11,8 +11,9 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                @include('partials.buttons.save')
-                @include('partials.buttons.back', ['url'=>route('admin.user-alerts.index')])
+                <button class="btn btn-danger" type="submit">
+                    {{ trans('global.save') }}
+                </button>
             </div>
         </form>
     </div>
